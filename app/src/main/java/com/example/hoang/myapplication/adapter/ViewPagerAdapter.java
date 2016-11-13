@@ -23,15 +23,15 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         fragmentList = new ArrayList<>();
+        fragmentList.add(new FragmentFood());
         fragmentList.add(new FragmentTimeline());
         fragmentList.add(new FragmentSomething());
-        fragmentList.add(new FragmentFood());
         fragmentList.add(new FragmentComplain());
 
         fragmentTitleList = new ArrayList<>();
+        fragmentTitleList.add("FragmentFood");
         fragmentTitleList.add("timeline");
         fragmentTitleList.add("FragmentSomething");
-        fragmentTitleList.add("FragmentFood");
         fragmentTitleList.add("FragmentComplain");
     }
 

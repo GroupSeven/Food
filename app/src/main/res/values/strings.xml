@@ -14,4 +14,6 @@
     <string name="text_login">Đăng nhập</string>
     <string name="text_search">Search</string>
     <string name="text_cart">Giỏ hàng</string>
+    <string name="userName">UserName</string>
+    <string name="open">open</string>
 </resources>

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity{
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter mViewPagerAdapter;
+    private DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +35,40 @@ public class MainActivity extends AppCompatActivity{
 
         findView();
         setupToolbar();
+        setUpDrawer();
+        setUpTablayout();
+    }
+
+    private void setUpTablayout() {
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+            tabLayout.getTabAt(0).setIcon(R.drawable.ic_clear_black_24dp);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic_apps_black_24dp);
+            tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite_black_24dp);
+            tabLayout.getTabAt(3).setIcon(R.drawable.ic_event_note_black_24dp);
 
+    }
+
+    private void setUpDrawer() {
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.open);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        actionBarDrawerToggle.syncState();
     }
 
     private void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
+
     }
 
     private void findView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
     }
 
 
@@ -56,6 +80,9 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
         switch (item.getItemId()){
             case R.id.itCart :
                 Toast.makeText(this, "Cart", Toast.LENGTH_SHORT).show();

@@ -1,53 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.hoang.myapplication.activity.home.MainActivity">
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorToolbar">
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/activity_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/marinSpace"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.example.hoang.myapplication.activity.home.MainActivity">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
+            <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                android:layout_height="wrap_content"
+                android:background="@color/colorToolbar">
 
-            </android.support.v7.widget.Toolbar>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/marinSpace"
+                    android:orientation="vertical">
 
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize">
 
+                    </android.support.v7.widget.Toolbar>
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_search"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_weight="3"
+                            android:background="@color/colorWhite"
+                            android:drawableLeft="@drawable/ic_search_black_24px"
+                            android:text="@string/search"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            android:layout_width="41dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="2dp"
+                            android:src="@drawable/ic_photo_camera_black_24px" />
+                    </LinearLayout>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:tabMode="scrollable"
+                        app:tabTextAppearance="@style/unCapCharacter" />
+                </LinearLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:tabMode="scrollable"
-                app:tabTextAppearance="@style/unCapCharacter" />
+                android:layout_height="match_parent">
+
+            </android.support.v4.view.ViewPager>
+
+
         </LinearLayout>
-    </android.support.design.widget.AppBarLayout>
+    </FrameLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+ <ExpandableListView
+     app:theme="@style/customColorButtonToogle"
+     android:layout_gravity="start"
+     android:id="@+id/epand"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="@color/tranparenthehe">
+ </ExpandableListView>
 
-    </android.support.v4.view.ViewPager>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcvTimeline"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>
