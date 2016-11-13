@@ -9,8 +9,8 @@ Time spent: **X** hours spent in total
 
 * [ ] **Custommer** 
 	* [ ] register, phone number is required field.
-	* [ ] can see the food available in the menu
-		* [ ] View food in category
+	* [x] can see the food available in the menu
+		* [x] View food in category
  		* [ ] View food in timeLine
  		* [ ] Order food
  		* [ ] Request (or answer) favorite food via post on timeline
