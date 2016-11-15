@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.activity.LoginActivity;
+import com.example.hoang.myapplication.activity.MapsActivity;
 import com.example.hoang.myapplication.adapter.ViewPagerAdapter;
 
 import butterknife.ButterKnife;
@@ -43,10 +44,10 @@ public class MainActivity extends AppCompatActivity{
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_clear_black_24dp);
+            tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_black_24px);
             tabLayout.getTabAt(1).setIcon(R.drawable.ic_apps_black_24dp);
-            tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite_black_24dp);
-            tabLayout.getTabAt(3).setIcon(R.drawable.ic_event_note_black_24dp);
+//            tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite_black_24dp);
+//            tabLayout.getTabAt(3).setIcon(R.drawable.ic_event_note_black_24dp);
 
     }
 
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity{
                 Toast.makeText(this, "Cart", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.itHelp :
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 Toast.makeText(this, "itHelp", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.itLogin :

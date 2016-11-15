@@ -3,7 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorToolbar">#1ed4da</color>
+    <color name="colorToolbar">#b11ed4da</color>
+    <color name="colorToolbarBellow">#1ed4da</color>
     <color name="colorWhite">#fff</color>
     <color name="colorGray">#CCC</color>
     <color name="colorFacebook">#4a6ea9</color>

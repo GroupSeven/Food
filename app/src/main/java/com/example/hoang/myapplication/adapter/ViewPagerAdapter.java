@@ -4,9 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.hoang.myapplication.activity.home.fragment.FragmentComplain;
 import com.example.hoang.myapplication.activity.home.fragment.FragmentFood;
-import com.example.hoang.myapplication.activity.home.fragment.FragmentSomething;
 import com.example.hoang.myapplication.activity.home.fragment.FragmentTimeline;
 
 import java.util.ArrayList;
@@ -25,14 +23,14 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         fragmentList = new ArrayList<>();
         fragmentList.add(new FragmentFood());
         fragmentList.add(new FragmentTimeline());
-        fragmentList.add(new FragmentSomething());
-        fragmentList.add(new FragmentComplain());
+//        fragmentList.add(new FragmentSomething());
+//        fragmentList.add(new FragmentComplain());
 
         fragmentTitleList = new ArrayList<>();
-        fragmentTitleList.add("FragmentFood");
-        fragmentTitleList.add("timeline");
-        fragmentTitleList.add("FragmentSomething");
-        fragmentTitleList.add("FragmentComplain");
+//        fragmentTitleList.add("FragmentFood");
+//        fragmentTitleList.add("timeline");
+//        fragmentTitleList.add("FragmentSomething");
+//        fragmentTitleList.add("FragmentComplain");
     }
 
     @Override
@@ -45,8 +43,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return fragmentTitleList.get(position);
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return fragmentTitleList.get(position);
+//    }
 }

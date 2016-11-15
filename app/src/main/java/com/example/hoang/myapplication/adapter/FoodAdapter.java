@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.model.Food;
+import com.example.hoang.myapplication.model.element.Food;
 
 import java.util.List;
 
@@ -69,7 +69,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Food food = mFoodList.get(getAdapterPosition());
-                    Toast.makeText(mContext, food.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, food.getImgUrl(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

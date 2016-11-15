@@ -1,4 +1,4 @@
-package com.example.hoang.myapplication.model;
+package com.example.hoang.myapplication.model.element;
 
 /**
  * Created by hoang on 11/13/16.
