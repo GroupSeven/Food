@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.FoodAdapter;
-import com.example.hoang.myapplication.helper.DataFoodDetail;
+import com.example.hoang.myapplication.helper.Data;
 
 import butterknife.ButterKnife;
 
@@ -37,7 +37,7 @@ public class FragmentFood extends Fragment {
 
     private void setUpRecycler() {
         recyclerViewFood = (RecyclerView) view.findViewById(R.id.rcFood);
-        foodAdapter = new FoodAdapter(getContext(), DataFoodDetail.posts());
+        foodAdapter = new FoodAdapter(getContext(), Data.posts());
         recyclerViewFood.setAdapter(foodAdapter);
         recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL,false));
     }
@@ -63,7 +63,7 @@ public class FragmentFood extends Fragment {
 //
 //import com.example.hoang.myapplication.R;
 //import com.example.hoang.myapplication.adapter.FoodAdapter;
-//import com.example.hoang.myapplication.helper.DataFoodDetail;
+//import com.example.hoang.myapplication.helper.Data;
 //import com.example.hoang.myapplication.model.element.Food;
 //
 //import java.util.ArrayList;
@@ -95,7 +95,7 @@ public class FragmentFood extends Fragment {
 //                    "officia porro iure quia iusto qui ipsa ut modi"  + i
 //            ));
 //        }
-//        foodAdapter = new FoodAdapter(getContext(), DataFoodDetail.posts());
+//        foodAdapter = new FoodAdapter(getContext(), Data.posts());
 //        recyclerViewFood.setAdapter(foodAdapter);
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, true);
 //        recyclerViewFood.setLayoutManager(linearLayoutManager);

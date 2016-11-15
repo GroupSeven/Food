@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity{
     private ViewPager viewPager;
     private ViewPagerAdapter mViewPagerAdapter;
     private DrawerLayout drawerLayout;
-    ActionBarDrawerToggle actionBarDrawerToggle;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
 
 
     @Override
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity{
     private void setUpDrawer() {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.open);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        // icon toogle
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBarDrawerToggle.syncState();
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void setupToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle(String.valueOf(tabLayout.getSelectedTabPosition()));
 
     }
 
@@ -105,4 +105,9 @@ public class MainActivity extends AppCompatActivity{
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        myToast("touched");
+        return super.onTouchEvent(event);
+    }
 }

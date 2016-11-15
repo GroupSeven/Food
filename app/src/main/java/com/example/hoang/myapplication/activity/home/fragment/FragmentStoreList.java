@@ -20,8 +20,8 @@ import butterknife.ButterKnife;
  * Created by hoang on 11/12/16.
  */
 
-public class FragmentSomething extends Fragment {
-    private RecyclerView recyclerViewListUser;
+public class FragmentStoreList extends Fragment {
+    private RecyclerView recyclerViewFood;
     private ListStoreAdapter foodAdapter;
     private View view;
     @Nullable
@@ -36,9 +36,11 @@ public class FragmentSomething extends Fragment {
     }
 
     private void setUpRecycler() {
-        recyclerViewListUser = (RecyclerView) view.findViewById(R.id.rcListStore);
+        recyclerViewFood = (RecyclerView) view.findViewById(R.id.rcListStore);
         foodAdapter = new ListStoreAdapter(getContext(), Data.postsStoreList());
-        recyclerViewListUser.setAdapter(foodAdapter);
-        recyclerViewListUser.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL,false));
+        recyclerViewFood.setAdapter(foodAdapter);
+        recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL,false));
     }
+
+
 }
