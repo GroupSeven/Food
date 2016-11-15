@@ -2,7 +2,7 @@ package com.example.hoang.myapplication.helper;
 
 import android.util.Log;
 
-import com.example.hoang.myapplication.model.element.Food;
+import com.example.hoang.myapplication.model.Food;
 
 import java.util.ArrayList;
 import java.util.List;

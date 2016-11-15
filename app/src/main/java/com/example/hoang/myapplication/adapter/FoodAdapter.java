@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.model.element.Food;
+import com.example.hoang.myapplication.model.Food;
 
 import java.util.List;
 
