@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         findView();
+
         setupToolbar();
         setUpDrawer();
         setUpTablayout();
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity{
     private void setUpDrawer() {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.open);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        // icon toogle
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         actionBarDrawerToggle.syncState();
@@ -86,19 +87,22 @@ public class MainActivity extends AppCompatActivity{
         }
         switch (item.getItemId()){
             case R.id.itCart :
-                Toast.makeText(this, "Cart", Toast.LENGTH_SHORT).show();
+                myToast("itCart");
                 break;
             case R.id.itHelp :
                 startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                Toast.makeText(this, "itHelp", Toast.LENGTH_SHORT).show();
+                myToast("itHelp");
                 break;
             case R.id.itLogin :
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
+                myToast("login");
                 break;
-
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void myToast(String msg) {
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
 }
