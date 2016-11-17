@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Hà Nội"
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/menuHaNoi"/>
+    <item android:title="Thừa Thiên - Huế"
+        android:icon="@android:drawable/presence_audio_online"
+        android:id="@+id/menuHue"/>
+    <item android:title="Hồ Chí Minh"
+        android:icon="@android:drawable/ic_delete"
+        android:id="@+id/menuHCM"/>
+
+    <item android:title="Liên hệ">
+        <menu>
+            <item android:title="Email"
+                android:icon="@android:drawable/sym_action_email"
+                android:id="@+id/menuEmail"/>
+            <item android:title="Điện Thoại"
+                android:icon="@android:drawable/stat_sys_phone_call"
+                android:id="@+id/menuDienThoai"/>
+        </menu>
+    </item>
+</menu>

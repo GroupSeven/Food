@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity{
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_black_24px);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_apps_black_24dp);
-//            tabLayout.getTabAt(2).setIcon(R.drawable.ic_favorite_black_24dp);
-//            tabLayout.getTabAt(3).setIcon(R.drawable.ic_event_note_black_24dp);
+            tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic_more_vert_white_24dp);
+            tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
+            tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
 
     }
 

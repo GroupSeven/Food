@@ -36,7 +36,6 @@ public class Data {
         List<StoreUser> postsStoreList = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 10; j++) {
-                Log.d("KIEMTRA", String.valueOf(i));
                 int x = 0;
                 x = i * 10 + j;
                 postsStoreList.add(new StoreUser(
