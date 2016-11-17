@@ -29,13 +29,20 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.Toolbar
-                        android:background="@color/colorToolbar"
-                        android:id="@+id/toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize">
+                    <!--<android.support.v7.widget.Toolbar-->
+                        <!--android:background="@color/colorToolbar"-->
+                        <!--android:id="@+id/toolbar"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="?attr/actionBarSize">-->
 
-                    </android.support.v7.widget.Toolbar>
+                    <!--</android.support.v7.widget.Toolbar>-->
+                    <!-- Load the toolbar here -->
+                    <include
+                        layout="@layout/toolbar_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <!-- Rest of content for the activity -->
 
                     <!--Begin Search-->
                     <!--<LinearLayout-->
