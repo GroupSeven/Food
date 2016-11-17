@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.adapter.FoodAdapter;
+import com.example.hoang.myapplication.adapter.TimelineAdapter;
 import com.example.hoang.myapplication.helper.Data;
 
 import butterknife.ButterKnife;
@@ -20,14 +20,15 @@ import butterknife.ButterKnife;
  * Created by hoang on 11/12/16.
  */
 
-public class FragmentFood extends Fragment {
+public class FragmentTimeline extends Fragment {
     private RecyclerView recyclerViewFood;
-    private FoodAdapter foodAdapter;
+    private TimelineAdapter foodAdapter;
     private View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.fragment_food_layout, container, false);
+        view = inflater.inflate(R.layout.fragment_layout_timeline, container, false);
         ButterKnife.bind(this, view);
 
         setUpRecycler();
@@ -36,11 +37,9 @@ public class FragmentFood extends Fragment {
     }
 
     private void setUpRecycler() {
-        recyclerViewFood = (RecyclerView) view.findViewById(R.id.rcFood);
-        foodAdapter = new FoodAdapter(getContext(), Data.posts());
+        recyclerViewFood = (RecyclerView) view.findViewById(R.id.rvTimeline);
+        foodAdapter = new TimelineAdapter(getContext(), Data.postingTimelineList());
         recyclerViewFood.setAdapter(foodAdapter);
-        recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL,false));
+        recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false));
     }
 }
-
-

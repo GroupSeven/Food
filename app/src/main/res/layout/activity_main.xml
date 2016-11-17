@@ -1,108 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    android:id="@+id/drawerLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/include_view_pager"/>
 
-        <LinearLayout
-            android:id="@+id/activity_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context="com.example.hoang.myapplication.activity.home.MainActivity">
-
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorToolbar">
-
-                <LinearLayout
-                    android:background="@color/colorToolbarBellow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!--<android.support.v7.widget.Toolbar-->
-                        <!--android:background="@color/colorToolbar"-->
-                        <!--android:id="@+id/toolbar"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="?attr/actionBarSize">-->
-
-                    <!--</android.support.v7.widget.Toolbar>-->
-                    <!-- Load the toolbar here -->
-                    <include
-                        layout="@layout/toolbar_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                    <!-- Rest of content for the activity -->
-
-                    <!--Begin Search-->
-                    <!--<LinearLayout-->
-
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@drawable/bg_search"-->
-                        <!--android:orientation="horizontal"-->
-                        <!--android:paddingLeft="10dp">-->
-
-                        <!--<Button-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="start"-->
-                            <!--android:layout_weight="3"-->
-                            <!--android:background="@color/colorWhite"-->
-                            <!--android:drawableLeft="@drawable/ic_search_black_24px"-->
-                            <!--android:text="@string/search"-->
-                            <!--android:textAlignment="viewStart"-->
-                            <!--android:textAllCaps="false" />-->
-
-                        <!--<ImageButton-->
-                            <!--android:id="@+id/imageButton"-->
-                            <!--android:layout_width="41dp"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center"-->
-                            <!--android:layout_margin="2dp"-->
-                            <!--android:src="@drawable/ic_photo_camera_black_24px" />-->
-                    <!--</LinearLayout>-->
-                    <!--End Search-->
-
-                    <android.support.design.widget.TabLayout
-                        android:id="@+id/tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:tabMode="fixed"
-                        app:tabGravity="fill"
-                        app:tabPadding="10dp"
-                        app:tabTextAppearance="@style/unCapCharacter" />
-                </LinearLayout>
-            </android.support.design.widget.AppBarLayout>
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </android.support.v4.view.ViewPager>
-
-
-        </LinearLayout>
-    </FrameLayout>
-
- <ExpandableListView
-     app:theme="@style/customColorButtonToogle"
-     android:layout_gravity="start"
-     android:id="@+id/epand"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:background="@color/tranparenthehe">
- </ExpandableListView>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navigation_header_layout"
+        app:menu="@menu/menu_navigation" />
 
 </android.support.v4.widget.DrawerLayout>

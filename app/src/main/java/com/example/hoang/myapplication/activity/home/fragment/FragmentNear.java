@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * Created by hoang on 11/12/16.
  */
 
-public class FragmentSomething extends Fragment {
+public class FragmentNear extends Fragment {
     private RecyclerView recyclerViewListUser;
     private ListStoreAdapter foodAdapter;
     private View view;

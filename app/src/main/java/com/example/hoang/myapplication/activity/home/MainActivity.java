@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity{
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity{
             tabLayout.getTabAt(1).setIcon(R.drawable.ic_more_vert_white_24dp);
             tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
             tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
+
 
     }
 
