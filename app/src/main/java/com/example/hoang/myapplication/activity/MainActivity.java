@@ -11,12 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
-import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
             tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_more_vert_white_24dp);
+            tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
             tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
             tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
 
@@ -62,7 +60,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void setupToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(String.valueOf(tabLayout.getSelectedTabPosition()));
+        getSupportActionBar().setTitle("main title");
 
     }
 

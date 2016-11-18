@@ -40,11 +40,11 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StoreUser food = mFoodList.get(position);
-        holder.tvName.setText(food.getName());
-        holder.tvSnip.setText(food.getPhone());
+        StoreUser storeUser = mFoodList.get(position);
+        holder.tvName.setText(storeUser.getName());
+        holder.tvSnip.setText(storeUser.getPhone());
 //        Glide.with(mContext)
-////                .load(food.getImgUrl())
+////                .load(storeUser.getImgUrl())
 //                .placeholder(R.drawable.pladeholder)
 //                .into(holder.ivPost);
     }
@@ -68,12 +68,12 @@ public class ListStoreAdapter extends RecyclerView.Adapter<ListStoreAdapter.View
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    StoreUser food = mFoodList.get(getAdapterPosition());
-                    Toast.makeText(mContext, "" + food.getName(), Toast.LENGTH_SHORT).show();
+                    StoreUser storeUser = mFoodList.get(getAdapterPosition());
+                    Toast.makeText(mContext, "" + storeUser.getName(), Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(mContext, UserStoreActivity.class);
 //                    mContext.startActivity(new Intent(mContext, SplashActivity.class));
-                    i.putExtra("name", food.getName());
-                    i.putExtra("phone", food.getPhone());
+                    i.putExtra("name", storeUser.getName());
+                    i.putExtra("phone", storeUser.getPhone());
                     mContext.startActivity(i);
                 }
             });

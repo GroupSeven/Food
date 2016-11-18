@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerAccountAdapter;
-import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -68,7 +67,7 @@ public class AccountActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
+            onBackPressed();
         }
             return super.onOptionsItemSelected(item);
     }

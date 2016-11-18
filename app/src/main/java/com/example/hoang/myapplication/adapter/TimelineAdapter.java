@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.activity.FoodDetailActivity;
+import com.example.hoang.myapplication.activity.UserStoreActivity;
 import com.example.hoang.myapplication.model.Timeline;
 
 import java.util.List;
@@ -43,11 +43,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Timeline food = mFoodList.get(position);
-        holder.tvName.setText(food.getName());
-        holder.tvSnip.setText(food.getContent());
+        Timeline timeline = mFoodList.get(position);
+        holder.tvName.setText(timeline.getName());
+        holder.tvSnip.setText(timeline.getContent());
         Glide.with(mContext)
-                .load(food.getImgUrl())
+                .load(timeline.getImgUrl())
                 .placeholder(R.drawable.pladeholder)
                 .into(holder.ivPost);
     }
@@ -71,11 +71,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Timeline food = mFoodList.get(getAdapterPosition());
-                    Toast.makeText(mContext, "" + food.getName(), Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(mContext, FoodDetailActivity.class);
+                    Timeline timeline = mFoodList.get(getAdapterPosition());
+                    Toast.makeText(mContext, "" + timeline.getName(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(mContext, UserStoreActivity.class);
 //                    mContext.startActivity(new Intent(mContext, SplashActivity.class));
-                    i.putExtra("name", food.getName());
+                    i.putExtra("name", timeline.getName());
                     mContext.startActivity(i);
                 }
             });

@@ -72,6 +72,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 public void onClick(View v) {
                     Food food = mFoodList.get(getAdapterPosition());
                     Toast.makeText(mContext, food.getImgUrl(), Toast.LENGTH_SHORT).show();
+                    mContext.startActivity(new Intent(mContext, FoodDetailActivity.class));
                 }
             });
         }
