@@ -1,4 +1,4 @@
-package com.example.hoang.myapplication.activity.home.fragment;
+package com.example.hoang.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

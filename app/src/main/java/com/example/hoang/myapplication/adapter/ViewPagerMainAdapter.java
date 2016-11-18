@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.hoang.myapplication.activity.home.fragment.FragmentTimeline;
-import com.example.hoang.myapplication.activity.home.fragment.FragmentFood;
-import com.example.hoang.myapplication.activity.home.fragment.FragmentNear;
-import com.example.hoang.myapplication.activity.home.fragment.FragmentStoreList;
+import com.example.hoang.myapplication.fragment.FragmentTimeline;
+import com.example.hoang.myapplication.fragment.FragmentFood;
+import com.example.hoang.myapplication.fragment.FragmentNear;
+import com.example.hoang.myapplication.fragment.FragmentStoreList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +16,11 @@ import java.util.List;
  * Created by hoang on 11/12/16.
  */
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerMainAdapter extends FragmentPagerAdapter {
     private  List<Fragment> fragmentList;
     private  List<String> fragmentTitleList;
 
-    public ViewPagerAdapter(FragmentManager fm) {
+    public ViewPagerMainAdapter(FragmentManager fm) {
         super(fm);
         fragmentList = new ArrayList<>();
         fragmentList.add(new FragmentTimeline());

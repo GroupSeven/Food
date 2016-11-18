@@ -8,7 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.activity.home.MainActivity;
 
 public class SplashActivity extends Activity {
     private static final int SPLASH_SHOW_TIME = 0;

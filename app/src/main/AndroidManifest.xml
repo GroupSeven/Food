@@ -24,14 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.home.MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.AccountActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,7 +50,8 @@
         <activity
             android:name=".activity.UserStoreActivity"
             android:label="@string/title_activity_user_store"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.FoodDetailActivity"></activity>
     </application>
 
 </manifest>

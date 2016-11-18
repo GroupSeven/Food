@@ -1,4 +1,4 @@
-package com.example.hoang.myapplication.activity.home.fragment;
+package com.example.hoang.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.adapter.ListStoreAdapter;
+import com.example.hoang.myapplication.adapter.TimelineAdapter;
 import com.example.hoang.myapplication.helper.Data;
 
 import butterknife.ButterKnife;
@@ -20,27 +20,23 @@ import butterknife.ButterKnife;
  * Created by hoang on 11/12/16.
  */
 
-public class FragmentStoreList extends Fragment {
-    private RecyclerView recyclerViewFood;
-    private ListStoreAdapter foodAdapter;
+public class FragmentTimeline extends Fragment {
     private View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_timeline_layout, container, false);
+        view = inflater.inflate(R.layout.fragment_layout_timeline, container, false);
         ButterKnife.bind(this, view);
-
         setUpRecycler();
 
         return view;
     }
 
     private void setUpRecycler() {
-        recyclerViewFood = (RecyclerView) view.findViewById(R.id.rcListStore);
-        foodAdapter = new ListStoreAdapter(getContext(), Data.postsStoreList());
+        RecyclerView recyclerViewFood = (RecyclerView) view.findViewById(R.id.rvTimeline);
+        TimelineAdapter foodAdapter = new TimelineAdapter(getContext(), Data.postingTimelineList());
         recyclerViewFood.setAdapter(foodAdapter);
-        recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL,false));
+        recyclerViewFood.setLayoutManager(new GridLayoutManager(getContext(), 1, LinearLayoutManager.VERTICAL, false));
     }
-
-
 }

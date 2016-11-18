@@ -1,4 +1,4 @@
-package com.example.hoang.myapplication.activity.home;
+package com.example.hoang.myapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,7 @@ import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.activity.LoginActivity;
-import com.example.hoang.myapplication.activity.MapsActivity;
-import com.example.hoang.myapplication.adapter.ViewPagerAdapter;
+import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
 
 import butterknife.ButterKnife;
 
@@ -24,7 +22,7 @@ public class MainActivity extends AppCompatActivity{
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ViewPagerAdapter mViewPagerAdapter;
+    private ViewPagerMainAdapter mViewPagerAdapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
@@ -33,15 +31,15 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        findView();
 
+        findView();
         setupToolbar();
         setUpDrawer();
         setUpTablayout();
     }
 
     private void setUpTablayout() {
-        mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mViewPagerAdapter = new ViewPagerMainAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
             tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
@@ -89,12 +87,14 @@ public class MainActivity extends AppCompatActivity{
             case R.id.itCart :
                 myToast("itCart");
                 break;
+            case R.id.itnotice:
+
             case R.id.itHelp :
                 startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 myToast("itHelp");
                 break;
-            case R.id.itLogin :
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            case R.id.itAccount :
+                startActivity(new Intent(getApplicationContext(), AccountActivity.class));
                 myToast("login");
                 break;
         }
