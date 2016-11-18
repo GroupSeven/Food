@@ -13,10 +13,10 @@
         android:layout_margin="10dp">
 
         <EditText
+            android:id="@+id/edtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/userName" />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -26,6 +26,7 @@
 
 
         <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -34,6 +35,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <TextView
+        android:id="@+id/tvFogot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -41,11 +43,13 @@
         android:text="@string/text_forgot_pass" />
 
     <Button
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:background="@color/colorToolbar"
         android:text="@string/text_submit"
-        android:textColor="@color/colorWhite" />
+        android:textColor="@color/colorWhite"
+        android:onClick="onSubmitEvent"/>
 
 </LinearLayout>

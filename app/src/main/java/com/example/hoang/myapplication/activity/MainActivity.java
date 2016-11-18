@@ -11,10 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
+import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -110,4 +112,5 @@ public class MainActivity extends AppCompatActivity{
         myToast("touched");
         return super.onTouchEvent(event);
     }
+
 }

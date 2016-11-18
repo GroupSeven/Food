@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerAccountAdapter;
+import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -71,4 +72,5 @@ public class AccountActivity extends AppCompatActivity {
         }
             return super.onOptionsItemSelected(item);
     }
+
 }

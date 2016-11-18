@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
-import com.example.hoang.myapplication.activity.UserStoreActivity;
+import com.example.hoang.myapplication.activity.FoodDetailActivity;
 import com.example.hoang.myapplication.model.Timeline;
 
 import java.util.List;
@@ -73,7 +73,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                 public void onClick(View v) {
                     Timeline food = mFoodList.get(getAdapterPosition());
                     Toast.makeText(mContext, "" + food.getName(), Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(mContext, UserStoreActivity.class);
+                    Intent i = new Intent(mContext, FoodDetailActivity.class);
 //                    mContext.startActivity(new Intent(mContext, SplashActivity.class));
                     i.putExtra("name", food.getName());
                     mContext.startActivity(i);

@@ -1,6 +1,7 @@
 package com.example.hoang.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
+import com.example.hoang.myapplication.activity.FoodDetailActivity;
 import com.example.hoang.myapplication.model.Food;
 
 import java.util.List;
@@ -59,7 +61,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         private TextView tvSnip;
         private ImageView ivPost;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvSnip = (TextView) itemView.findViewById(R.id.tvSnip);

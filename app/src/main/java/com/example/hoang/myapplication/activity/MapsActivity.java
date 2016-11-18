@@ -2,6 +2,7 @@ package com.example.hoang.myapplication.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.example.hoang.myapplication.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,4 +45,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
 }
