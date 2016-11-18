@@ -7,6 +7,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerAccountAdapter;
@@ -20,6 +22,7 @@ public class AccountActivity extends AppCompatActivity {
     private ViewPagerAccountAdapter mViewPagerAdapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,16 @@ public class AccountActivity extends AppCompatActivity {
 
         findView();
         setUpTablayout();
+        setUpToolbar();
+
+    }
+
+    private void setUpToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Account Activity");
+//        getSupportActionBar().
 
     }
 
@@ -48,5 +61,14 @@ public class AccountActivity extends AppCompatActivity {
 //        tabLayout.getTabAt(1).setIcon(R.drawable.ic_more_vert_white_24dp);
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+//            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+            return super.onOptionsItemSelected(item);
     }
 }
