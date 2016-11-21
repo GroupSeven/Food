@@ -48,6 +48,7 @@ public class Data {
         }
         return postsStoreList;
     }
+
     public static List<Timeline> postingTimelineList() {
         List<Timeline> postingTimelineList = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
@@ -66,5 +67,19 @@ public class Data {
         }
         return postingTimelineList;
     }
+
+    public static List<StoreUser> postLatLngStoreUser() {
+        List<StoreUser> mList = new ArrayList<>();
+
+        mList.add( new StoreUser(10.821833,106.187178));
+        mList.add( new StoreUser(10.721833,106.287178));
+        mList.add( new StoreUser(10.621833,106.387178));
+        mList.add( new StoreUser(10.521833,106.487178));
+        mList.add( new StoreUser(10.421833,106.587178));
+        mList.add( new StoreUser(10.321833,106.687178));
+
+        return mList;
+    }
+
 
 }

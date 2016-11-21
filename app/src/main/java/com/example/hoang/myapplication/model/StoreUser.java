@@ -7,8 +7,8 @@ package com.example.hoang.myapplication.model;
 public class StoreUser {
     private String name;
     private String phone;
-//    private String lat;
-//    private String lng;
+    private double lat;
+    private double lng;
     private String locate;
 
     public StoreUser() {
@@ -18,6 +18,27 @@ public class StoreUser {
         this.name = name;
         this.phone = phone;
         this.locate = locate;
+    }
+
+    public StoreUser(double lat, double lng) {
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
     public String getName() {

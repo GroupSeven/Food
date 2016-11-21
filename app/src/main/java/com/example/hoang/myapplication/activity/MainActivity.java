@@ -85,12 +85,13 @@ public class MainActivity extends AppCompatActivity{
         }
         switch (item.getItemId()){
             case R.id.itCart :
+                startActivity(new Intent(MainActivity.this, BandoActivity.class));
                 myToast("itCart");
                 break;
             case R.id.itnotice:
 
             case R.id.itHelp :
-                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+//                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 myToast("itHelp");
                 break;
             case R.id.itAccount :

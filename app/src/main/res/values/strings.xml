@@ -111,4 +111,5 @@
     <string name="title_activity_food_detail">FoodDetailActivity</string>
     <string name="text_forgot_pass">Fogot password</string>
     <string name="text_submit">Submit</string>
+    <string name="title_activity_bando">Map</string>
 </resources>
