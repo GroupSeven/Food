@@ -71,12 +71,15 @@ public class Data {
     public static List<StoreUser> postLatLngStoreUser() {
         List<StoreUser> mList = new ArrayList<>();
 
-        mList.add( new StoreUser(10.821833,106.187178));
-        mList.add( new StoreUser(10.721833,106.287178));
-        mList.add( new StoreUser(10.621833,106.387178));
-        mList.add( new StoreUser(10.521833,106.487178));
-        mList.add( new StoreUser(10.421833,106.587178));
-        mList.add( new StoreUser(10.321833,106.687178));
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                String lat, lng;
+                lat = "10." + i + j + "84792";
+                lng = "106." + j + i + "0996";
+                mList.add(new StoreUser(Float.parseFloat(lat), Float.parseFloat(lng)));
+            }
+
+        }
 
         return mList;
     }

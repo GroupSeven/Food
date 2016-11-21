@@ -71,7 +71,7 @@ public class FragmentMapNearly extends Fragment {
                 Log.d("HDH", String.valueOf(mStoreUsers.get(0).getLng()));
                 for (int i = 0; i < mStoreUsers.size(); i++) {
                     LatLng toado = new LatLng(mStoreUsers.get(i).getLat(), mStoreUsers.get(i).getLng());
-                    googleMap.addMarker(new MarkerOptions().position(toado).title("huu hoang").snippet("Hoang Huu"));
+                    googleMap.addMarker(new MarkerOptions().position(toado).title("Store").snippet("Name :D"));
                 }
                 // end add multiple marker
 
