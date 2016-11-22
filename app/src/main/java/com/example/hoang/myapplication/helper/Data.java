@@ -1,10 +1,9 @@
 package com.example.hoang.myapplication.helper;
 
-import android.util.Log;
-
 import com.example.hoang.myapplication.model.Food;
 import com.example.hoang.myapplication.model.StoreUser;
 import com.example.hoang.myapplication.model.Timeline;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,6 @@ public class Data {
         List<Food> post = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 10; j++) {
-                Log.d("KIEMTRA", String.valueOf(i));
                 int x = 0;
                 x = i * 10 + j;
                 post.add(new Food(
@@ -83,6 +81,9 @@ public class Data {
 
         return mList;
     }
+    public  static LatLng latLngHCM(){
+        return new LatLng(10.821982, 106.687136);
 
+    }
 
 }

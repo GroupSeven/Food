@@ -2,6 +2,8 @@ package com.example.hoang.myapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -18,13 +20,15 @@ import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
 
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerMainAdapter mViewPagerAdapter;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +46,16 @@ public class MainActivity extends AppCompatActivity{
         mViewPagerAdapter = new ViewPagerMainAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
-            tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
-            tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
-            tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
+        tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
 
 
     }
 
     private void setUpDrawer() {
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.open);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.open);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,6 +73,7 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator);
     }
 
 
@@ -80,21 +85,24 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()){
-            case R.id.itCart :
-                startActivity(new Intent(MainActivity.this, BandoActivity.class));
+        switch (item.getItemId()) {
+            case R.id.itCart:
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
+                snackbar.show();
                 myToast("itCart");
                 break;
             case R.id.itnotice:
 
-            case R.id.itHelp :
+            case R.id.itHelp:
 //                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                 myToast("itHelp");
                 break;
-            case R.id.itAccount :
+            case R.id.itAccount:
                 startActivity(new Intent(getApplicationContext(), AccountActivity.class));
                 myToast("login");
                 break;
