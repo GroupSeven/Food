@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
         tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
+        tabLayout.getTabAt(4).setIcon(R.drawable.ic_explore_white_24px);
 
 
     }

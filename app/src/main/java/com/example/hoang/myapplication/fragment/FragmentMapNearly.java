@@ -69,7 +69,7 @@ public class FragmentMapNearly extends Fragment {
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
-                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+//                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 setupCameraMap();
                 setupMarker();
                 setMylocationButton();

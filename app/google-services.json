@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "882205404273",
+    "firebase_url": "https://finalfoodcoderschool.firebaseio.com",
+    "project_id": "finalfoodcoderschool",
+    "storage_bucket": "finalfoodcoderschool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882205404273:android:e2b37930c67b42da",
+        "android_client_info": {
+          "package_name": "com.example.hoang.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882205404273-qttbc4usfbqrdb6dkugfpae6eiqresbh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hoang.myapplication",
+            "certificate_hash": "ACA63F3F1A16AECCC4A7DA0BD6866B49F090DACA"
+          }
+        },
+        {
+          "client_id": "882205404273-kejkgsle3rjvg9jbqk2tj588ag9pv7tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa9T8fB6y_B8JY2RMcftKR4FtdrpMnjJs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882205404273-kejkgsle3rjvg9jbqk2tj588ag9pv7tp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
