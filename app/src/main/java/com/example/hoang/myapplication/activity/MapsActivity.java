@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
-import com.example.hoang.myapplication.helper.GPSTracker;
 import com.example.hoang.myapplication.helper.Helper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,7 +24,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     CoordinatorLayout coordinatorLayout;
 
-    GPSTracker gpsTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +60,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                gpsTracker = new GPSTracker(getApplicationContext());
                 Helper.showMsg(getApplicationContext(), "SHOW");
 
                 Snackbar snackbar = Snackbar
-                        .make(coordinatorLayout, String.valueOf(gpsTracker.getLatitude()), Snackbar.LENGTH_LONG);
+                        .make(coordinatorLayout, String.valueOf("abc"), Snackbar.LENGTH_LONG);
                 snackbar.show();
 
             }

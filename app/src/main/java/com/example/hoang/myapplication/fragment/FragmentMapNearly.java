@@ -8,7 +8,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
-import com.example.hoang.myapplication.helper.GPSTracker;
 import com.example.hoang.myapplication.model.StoreUser;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,7 +23,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -38,19 +35,17 @@ import java.util.ArrayList;
  */
 
 public class FragmentMapNearly extends Fragment {
-    MapView mMapView;
+    private MapView mMapView;
     private GoogleMap googleMap;
-    ArrayList<StoreUser> mStoreUsers;
+    private ArrayList<StoreUser> mStoreUsers;
     private CoordinatorLayout coordinatorLayout;
-    MarkerOptions markerOptions;
-    Marker marker;
-    RelativeLayout mrootLayout;
-    Snackbar snackbar;
-    PolylineOptions polylineOptions;
-    GPSTracker gpsTracker;
+    private MarkerOptions markerOptions;
+    private Marker marker;
+    private RelativeLayout mrootLayout;
+    private Snackbar snackbar;
+    private PolylineOptions polylineOptions;
 
-    CameraPosition myLocation;
-
+    Location mLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,24 +69,32 @@ public class FragmentMapNearly extends Fragment {
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
+                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 setupCameraMap();
                 setupMarker();
-                setMylocation();
-                myLocation = googleMap.getCameraPosition();
-                LatLng currentLatLng = new LatLng(myLocation.target.latitude, myLocation.target.longitude);
-                setupPoliline(Data.latLngHCM(), new LatLng(10.821833, 107.687178));
+                setMylocationButton();
             }
 
             private void setupPoliline(LatLng currentLatLng, LatLng storeLatLng) {
                 polylineOptions = new PolylineOptions();
                 polylineOptions.add(currentLatLng);
                 polylineOptions.add(storeLatLng);
-                polylineOptions.color(android.R.color.holo_green_dark);
+                polylineOptions.color(R.color.colorRed);
                 googleMap.addPolyline(polylineOptions);
+
+            }
+
+            private LatLng myLocation() {
+                mLocation = googleMap.getMyLocation();
+                if (mLocation == null) {
+                    return new LatLng(10, 123);
+                } else {
+                    return new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+                }
             }
 
             private void setupCameraMap() {
-                LatLng sydney = new LatLng(10.821833, 106.887178);
+                final LatLng sydney = new LatLng(10.821833, 106.887178);
                 CameraUpdate mCameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 8);
 
                 /*
@@ -107,7 +110,7 @@ public class FragmentMapNearly extends Fragment {
             }
 
 
-            private void setMylocation() {
+            private void setMylocationButton() {
                 if (ActivityCompat.checkSelfPermission(rootView.getContext()
                         , Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                         && ActivityCompat.checkSelfPermission(rootView.getContext(),
@@ -117,7 +120,6 @@ public class FragmentMapNearly extends Fragment {
                     return;
                 }
                 googleMap.setMyLocationEnabled(true);
-
 
             }
 
@@ -131,7 +133,6 @@ public class FragmentMapNearly extends Fragment {
                     markerOptions.position(mLatLng).title("Store").snippet("Name :D");
                     markerOptions.draggable(true);
                     googleMap.addMarker(markerOptions);
-
                     marker = googleMap.addMarker(markerOptions);
                     marker.showInfoWindow();
 
@@ -144,15 +145,14 @@ public class FragmentMapNearly extends Fragment {
                 googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
                     @Override
                     public void onInfoWindowClick(final Marker marker) {
-
+                        LatLng storeLatLng = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+                        setupPoliline(storeLatLng, myLocation());
                         snackbar = Snackbar
                                 .make(mrootLayout, " this is : " + marker.getTitle(), Snackbar.LENGTH_LONG);
                         snackbar.setAction("ef", new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
-                                Toast.makeText(getContext(), " Start your activity, push sthing" + marker.getId().toString(), Toast.LENGTH_SHORT).show();
-
+                                Toast.makeText(getContext(), "--+Start your activity, push sthing", Toast.LENGTH_SHORT).show();
                             }
                         });
                         snackbar.show();
@@ -164,33 +164,12 @@ public class FragmentMapNearly extends Fragment {
                 googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
-                        LatLng storeLatLng = marker.getPosition();
-                        String huu = String.valueOf(storeLatLng.latitude);
-                        gpsTracker = new GPSTracker(getContext());
-                        Toast.makeText(getContext(), "clicked" + gpsTracker.getLatitude(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
                         return false;
                     }
                 });
             }
 
-
-            void getCurrentLocation() {
-                Location myLocation = googleMap.getMyLocation();
-                if (myLocation != null) {
-                    double dLatitude = myLocation.getLatitude();
-                    double dLongitude = myLocation.getLongitude();
-                    Log.i("APPLICATION", " : " + dLatitude);
-                    Log.i("APPLICATION", " : " + dLongitude);
-                    googleMap.addMarker(new MarkerOptions().position(
-                            new LatLng(dLatitude, dLongitude)).title("My Location"));
-
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(dLatitude, dLongitude), 8));
-
-                } else {
-                    Toast.makeText(getContext(), "Unable to fetch the current location", Toast.LENGTH_SHORT).show();
-                }
-
-            }
 
         });
 
