@@ -8,6 +8,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ import java.util.ArrayList;
  */
 
 public class FragmentMapNearly extends Fragment {
+    private static final int PERMISSION_REQUEST_CODE = 11;
     private MapView mMapView;
     private GoogleMap googleMap;
     private ArrayList<StoreUser> mStoreUsers;
@@ -66,6 +68,8 @@ public class FragmentMapNearly extends Fragment {
         }
 
         mMapView.getMapAsync(new OnMapReadyCallback() {
+            public static final int PERMISSION_REQUEST_CODE = 11;
+
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
@@ -111,6 +115,19 @@ public class FragmentMapNearly extends Fragment {
 
 
             private void setMylocationButton() {
+                // new
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+                {
+                    System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW");
+                    if(!checkPermission()) {
+                        requestPermission();
+                    }else {
+                        System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW++");
+                    }
+                }
+
+                /// old
                 if (ActivityCompat.checkSelfPermission(rootView.getContext()
                         , Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                         && ActivityCompat.checkSelfPermission(rootView.getContext(),
@@ -121,6 +138,29 @@ public class FragmentMapNearly extends Fragment {
                 }
                 googleMap.setMyLocationEnabled(true);
 
+            }
+
+            private boolean checkPermission(){
+                int result = ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+                if (result == PackageManager.PERMISSION_GRANTED){
+
+                    return true;
+
+                } else {
+
+                    return false;
+                }
+            }
+            private void requestPermission(){
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION)){
+
+                    Toast.makeText(getContext(),"GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",Toast.LENGTH_LONG).show();
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
+
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
+                }
             }
 
 
@@ -202,4 +242,21 @@ public class FragmentMapNearly extends Fragment {
     }
 
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Toast.makeText(getContext(),"Permission Granted, Now you can access location data.",Toast.LENGTH_LONG).show();
+
+
+                } else {
+
+                    Toast.makeText(getContext(),"Permission Denied, You cannot access location data.",Toast.LENGTH_LONG).show();
+
+                }
+                break;
+        }
+    }
 }
