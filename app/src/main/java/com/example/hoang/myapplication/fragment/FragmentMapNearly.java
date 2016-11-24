@@ -99,7 +99,7 @@ public class FragmentMapNearly extends Fragment {
 
             private void setupCameraMap() {
                 final LatLng sydney = new LatLng(10.821833, 106.887178);
-                CameraUpdate mCameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 8);
+                CameraUpdate mCameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 9);
 
                 /*
                 CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(8).tilt(30).bearing(90).build();
@@ -115,8 +115,6 @@ public class FragmentMapNearly extends Fragment {
 
 
             private void setMylocationButton() {
-                // new
-
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
                 {
                     System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW");
@@ -137,6 +135,7 @@ public class FragmentMapNearly extends Fragment {
                     return;
                 }
                 googleMap.setMyLocationEnabled(true);
+
 
             }
 
@@ -247,14 +246,9 @@ public class FragmentMapNearly extends Fragment {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     Toast.makeText(getContext(),"Permission Granted, Now you can access location data.",Toast.LENGTH_LONG).show();
-
-
                 } else {
-
                     Toast.makeText(getContext(),"Permission Denied, You cannot access location data.",Toast.LENGTH_LONG).show();
-
                 }
                 break;
         }

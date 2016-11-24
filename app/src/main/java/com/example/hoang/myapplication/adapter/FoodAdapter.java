@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
@@ -71,8 +70,11 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     Food food = mFoodList.get(getAdapterPosition());
-                    Toast.makeText(mContext, food.getImgUrl(), Toast.LENGTH_SHORT).show();
-                    mContext.startActivity(new Intent(mContext, FoodDetailActivity.class));
+//                    Toast.makeText(mContext, food.getImgUrl(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(mContext, FoodDetailActivity.class);
+                    i.putExtra("imgurl", food.getImgUrl());
+                    i.putExtra("foodName", food.getName());
+                    mContext.startActivity(i);
                 }
             });
         }

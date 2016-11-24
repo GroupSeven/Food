@@ -19,6 +19,7 @@ public class SplashActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         new BackgroundSplashTask().execute();
+
     }
 
     private class BackgroundSplashTask extends AsyncTask<Void, Void, Void> {

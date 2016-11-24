@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Helper;
 
-public class UserStoreActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "cheese_name";
     private static final String PROFILE_URL = "http://img.f26.kinhdoanh.vnecdn.net/2016/11/24/diengiaVEPR201635201479952510-3401-2605-1479966259_490x294.jpg";
@@ -22,7 +22,7 @@ public class UserStoreActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_store);
+        setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
         final String cheeseName = intent.getStringExtra(EXTRA_NAME);
@@ -37,7 +37,7 @@ public class UserStoreActivity extends AppCompatActivity {
 
         loadBackdrop();
     }
-    //
+//
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
         Glide.with(this).load(PROFILE_URL).centerCrop().into(imageView);
@@ -45,7 +45,7 @@ public class UserStoreActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu_profile, menu);
         return true;
     }
     @Override

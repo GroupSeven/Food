@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
+
         <include layout="@layout/viewpager_main_include" />
 
         <android.support.design.widget.NavigationView

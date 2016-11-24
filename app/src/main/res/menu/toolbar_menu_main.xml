@@ -1,79 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/itSearch"
-        android:title="@string/text_search"
         android:icon="@drawable/bg_search"
-        app:showAsAction="always"
+        android:title="@string/text_search"
         android:visible="false"
-        />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/itCart"
-        android:title="@string/text_cart"
         android:icon="@drawable/ic_shopping_cart_white_24dp"
-        app:showAsAction="always"
-        />
-
+        android:title="@string/text_cart"
+        app:showAsAction="always" />
+    <item
+    android:id="@+id/itAccount"
+    android:icon="@drawable/ic_account_circle_white_24px"
+    android:title="@string/text_account"
+    app:showAsAction="always" />
+    <item
+        android:id="@+id/itProfile"
+        android:icon="@drawable/quantum_ic_pause_circle_filled_white_36"
+        android:title="@string/text_account"
+        app:showAsAction="always" />
     <item
         android:icon="@drawable/ic_more_vert_white_24dp"
         android:title="@string/more"
-        app:showAsAction="always"
-        >
+        app:showAsAction="always">
 
         <menu>
-            <item
-                android:id="@+id/itAccount"
-                android:title="@string/text_account"
-                android:icon="@drawable/ic_sentiment_satisfied_black_24dp"
-                />
+
 
             <item
                 android:id="@+id/itnotice"
-                android:title="@string/text_notice"
                 android:icon="@drawable/ic_notifications_none_black_24dp"
-                />
+                android:title="@string/text_notice" />
 
             <item
                 android:id="@+id/itWishList"
-                android:title="@string/text_wishList"
                 android:icon="@drawable/ic_favorite_border_black_24dp"
-                />
-
+                android:title="@string/text_wishList" />
 
 
             <item
                 android:id="@+id/itMyCart"
-                android:title="@string/text_mycart"
                 android:icon="@drawable/ic_content_paste_black_24dp"
-                />
+                android:title="@string/text_mycart" />
 
             <item
                 android:id="@+id/itSetting"
-                android:title="@string/text_setting"
                 android:icon="@drawable/ic_settings_black_24dp"
-                />
+                android:title="@string/text_setting" />
 
             <item
                 android:id="@+id/itTerm"
-                android:title="@string/text_term"
                 android:icon="@drawable/ic_event_note_black_24dp"
-                />
+                android:title="@string/text_term" />
 
             <item
                 android:id="@+id/itHelp"
-                android:title="@string/text_help"
                 android:icon="@drawable/ic_help_outline_black_24dp"
-                />
+                android:title="@string/text_help" />
 
             <item
                 android:id="@+id/itLogout"
-                android:title="@string/text_logout"
                 android:icon="@drawable/ic_logout"
-                android:visible="false"
-                />
+                android:title="@string/text_logout"
+                android:visible="false" />
 
         </menu>
 

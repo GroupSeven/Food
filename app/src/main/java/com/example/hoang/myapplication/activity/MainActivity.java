@@ -1,5 +1,6 @@
 package com.example.hoang.myapplication.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -13,10 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
+import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
         tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
-        tabLayout.getTabAt(4).setIcon(R.drawable.ic_explore_white_24px);
+//        tabLayout.getTabAt(4).setIcon(R.drawable.ic_explore_white_24px);
 
 
     }
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu_main, menu);
         return true;
     }
 
@@ -99,9 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.itnotice:
 
-            case R.id.itHelp:
-//                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                myToast("itHelp");
+            case R.id.itProfile:
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.itAccount:
                 startActivity(new Intent(getApplicationContext(), AccountActivity.class));
@@ -121,4 +124,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
+//    public void avatarAction(View view) {
+//        Helper.showMsg(getApplicationContext(), "click dc ne");
+//        ShowDialogAvatar();
+//    }
+
+    private void ShowDialogAvatar() {
+        final Dialog dlAvatar = new Dialog(getApplicationContext());
+        dlAvatar.setTitle("This is dialog");
+        dlAvatar.setContentView(R.layout.dialog_avatar_layout);
+        TextView op1 = (TextView) dlAvatar.findViewById(R.id.tvViewAvatar);
+        op1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Helper.showMsg(getApplicationContext(), "btn1");
+            }
+        });
+
+
+    }
 }
