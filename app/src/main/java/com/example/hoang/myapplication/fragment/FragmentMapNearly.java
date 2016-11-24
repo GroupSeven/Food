@@ -77,6 +77,7 @@ public class FragmentMapNearly extends Fragment {
                 setupCameraMap();
                 setupMarker();
                 setMylocationButton();
+                googleMap.getUiSettings().setZoomControlsEnabled(true);
             }
 
             private void setupPoliline(LatLng currentLatLng, LatLng storeLatLng) {
@@ -253,4 +254,15 @@ public class FragmentMapNearly extends Fragment {
                 break;
         }
     }
+
+//    @Override
+//    public void onDestroyView() {
+//        if (googleMap != null) {
+//            getFragmentManager()
+//                    .beginTransaction()
+//                    .remove(getFragmentManager().findFragmentById(R.id.map))
+//                    .commit();
+//        }
+//        super.onDestroyView();
+//    }
 }

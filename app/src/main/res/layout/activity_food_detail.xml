@@ -53,7 +53,6 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-            <include layout="@layout/ct_clon_cmt"></include>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -83,35 +82,31 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="10dp"
                         android:paddingTop="5dp"
-                        android:text="User nêm   " />
+                        android:text="User nêm   "
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:textSize="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Onother feild" />
+                        android:text="Onother feild"
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/user"
-                    android:id="@+id/imageView2" />
+                    android:src="@drawable/user" />
             </LinearLayout>
-<include layout="@layout/ct_clon_cmt"></include>
-<include layout="@layout/ct_clon_cmt"></include>
-<include layout="@layout/ct_clon_cmt"></include>
 
-            <include layout="@layout/ct_clon_cmt"></include>
-<include layout="@layout/ct_clon_cmt"></include>
-<include layout="@layout/ct_clon_cmt"></include>
-<include layout="@layout/ct_clon_cmt"></include>
+        <include layout="@layout/mot_tram_cmt_haha"/>
+            <!-- thay cái mot_tram_cmt_haha bằng cái recyclerView bên dưới-->
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvReview"
                 android:layout_width="match_parent"
