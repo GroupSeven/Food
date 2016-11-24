@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/space_normal"
+    android:paddingRight="@dimen/space_normal"
+    android:paddingTop="@dimen/space_normal">
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/space_small"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user" />
+
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_small"
+        android:layout_marginTop="@dimen/space_small"
+        android:layout_toLeftOf="@+id/tvDate"
+        android:layout_toRightOf="@id/ivAvatar"
+        android:gravity="left"
+        android:text="clon name"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/size_normal"
+        tools:text="Card Title" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/space_small"
+        android:text="12/12/2011"
+        android:textColor="@color/cast_expanded_controller_ad_label_background_color"
+        android:textSize="14sp"
+        tools:text="12/08/2010" />
+
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/rating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUsername"
+        android:layout_marginLeft="@dimen/space_small"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/ivAvatar"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressTint="#faef24"
+        android:rating="3"
+        android:stepSize="0.1"
+        tools:rating="3" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:layout_alignLeft="@+id/rating"
+        android:layout_below="@id/ivAvatar"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@color/divider" />
+</RelativeLayout>

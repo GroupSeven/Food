@@ -27,6 +27,9 @@
             app:tabGravity="fill"
             app:tabMode="fixed"
             app:tabPadding="10dp"
+            app:tabIndicatorColor="@color/colorGoogle"
+            app:tabBackground="@drawable/tablayout_color_selector"
+            android:overScrollMode="always"
             app:tabTextAppearance="@style/unCapCharacter" />
     </android.support.design.widget.AppBarLayout>
 

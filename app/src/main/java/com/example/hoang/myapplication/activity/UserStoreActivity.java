@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,9 +15,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
+import com.example.hoang.myapplication.adapter.FoodAdapter;
+import com.example.hoang.myapplication.helper.Data;
 import com.example.hoang.myapplication.helper.Helper;
 
 public class UserStoreActivity extends AppCompatActivity {
+    private RecyclerView rcFood;
+    FoodAdapter adapter;
+//    private
 
     public static final String EXTRA_NAME = "cheese_name";
     private static final String PROFILE_URL = "http://img.f26.kinhdoanh.vnecdn.net/2016/11/24/diengiaVEPR201635201479952510-3401-2605-1479966259_490x294.jpg";
@@ -24,6 +32,12 @@ public class UserStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_store);
 
+        rcFood = (RecyclerView) findViewById(R.id.rcFood);
+
+        adapter = new FoodAdapter(UserStoreActivity.this, Data.posts());
+
+        rcFood.setAdapter(adapter);
+        rcFood.setLayoutManager(new GridLayoutManager(UserStoreActivity.this, 2, LinearLayoutManager.VERTICAL,false));
         Intent intent = getIntent();
         final String cheeseName = intent.getStringExtra(EXTRA_NAME);
 
@@ -36,6 +50,9 @@ public class UserStoreActivity extends AppCompatActivity {
         collapsingToolbar.setTitle(cheeseName);
 
         loadBackdrop();
+
+
+
     }
     //
     private void loadBackdrop() {

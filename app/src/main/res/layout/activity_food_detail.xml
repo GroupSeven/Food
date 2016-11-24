@@ -53,6 +53,8 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+            <include layout="@layout/ct_clon_cmt"></include>
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -67,12 +69,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-        <ImageView
-            android:layout_gravity="center"
-            android:src="@drawable/user"
-            android:id="@+id/dlaksjdlksaj"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="User nêm   " />
+
+                    <TextView
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Onother feild" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/user"
+                    android:id="@+id/imageView2" />
+            </LinearLayout>
+<include layout="@layout/ct_clon_cmt"></include>
+<include layout="@layout/ct_clon_cmt"></include>
+<include layout="@layout/ct_clon_cmt"></include>
+
+            <include layout="@layout/ct_clon_cmt"></include>
+<include layout="@layout/ct_clon_cmt"></include>
+<include layout="@layout/ct_clon_cmt"></include>
+<include layout="@layout/ct_clon_cmt"></include>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvReview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_post_snippet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.hoang.myapplication.activity.PostSnippetActivity">
+
+    <include layout="@layout/toolbar_main"/>
+
+    <EditText
+        android:id="@+id/edt"
+        android:hint="what you want tso hare"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:onClick="onClick"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="click"
+        android:background="@color/colorToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</FrameLayout>

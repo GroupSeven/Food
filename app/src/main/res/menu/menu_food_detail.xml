@@ -1,8 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/AppTheme.AppBarOverlay"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hoang.myapplication.activity.FoodDetailActivity">
     <item
+        android:theme="@style/AppTheme.AppBarOverlay"
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"

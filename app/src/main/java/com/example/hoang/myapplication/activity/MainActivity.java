@@ -1,7 +1,7 @@
 package com.example.hoang.myapplication.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -14,13 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
-import com.example.hoang.myapplication.helper.Helper;
 
 import butterknife.ButterKnife;
 
@@ -52,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
         tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
+//        tabLayout.setVisibility(2);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
+        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
+//        tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
 //        tabLayout.getTabAt(4).setIcon(R.drawable.ic_explore_white_24px);
 
 
@@ -110,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AccountActivity.class));
                 myToast("login");
                 break;
+            case  R.id.itPost:
+                startActivity(new Intent(getApplicationContext(), PostActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -124,23 +125,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onTouchEvent(event);
     }
 
-//    public void avatarAction(View view) {
-//        Helper.showMsg(getApplicationContext(), "click dc ne");
-//        ShowDialogAvatar();
-//    }
-
-    private void ShowDialogAvatar() {
-        final Dialog dlAvatar = new Dialog(getApplicationContext());
-        dlAvatar.setTitle("This is dialog");
-        dlAvatar.setContentView(R.layout.dialog_avatar_layout);
-        TextView op1 = (TextView) dlAvatar.findViewById(R.id.tvViewAvatar);
-        op1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Helper.showMsg(getApplicationContext(), "btn1");
-            }
-        });
 
 
-    }
 }

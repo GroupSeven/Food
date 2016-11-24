@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.hoang.myapplication.activity.UserStoreActivity">
+    <item
+        android:id="@+id/itSavePost"
+        android:orderInCategory="100"
+        android:title="@string/post_now"
+        app:showAsAction="always" />
+</menu>

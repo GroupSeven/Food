@@ -68,7 +68,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <include layout="@layout/ct_top_profile" />
+            <include
+                layout="@layout/ct_top_profile" />
 
 
 

@@ -1,55 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
-
-    <android.support.design.widget.TextInputLayout
+    <RelativeLayout
+        android:layerType="software"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:background="@drawable/bg_randrop">
 
-        <EditText
-            android:id="@+id/edtUser"
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/userName" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_margin="10dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+            <EditText
+                android:id="@+id/edtUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/userName" />
+        </android.support.design.widget.TextInputLayout>
 
-
-        <EditText
-            android:id="@+id/edtPassword"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            tools:ignore="Deprecated" />
-    </android.support.design.widget.TextInputLayout>
+            android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/tvFogot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="right"
-        android:text="@string/text_forgot_pass" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:background="@color/colorToolbar"
-        android:text="@string/text_submit"
-        android:textColor="@color/colorWhite"
-        android:onClick="onSubmitEvent"/>
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                tools:ignore="Deprecated" />
+        </android.support.design.widget.TextInputLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvFogot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="right"
+            android:text="@string/text_forgot_pass" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@color/colorToolbar"
+            android:onClick="onSubmitEvent"
+            android:text="@string/text_submit"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -25,7 +25,11 @@
             android:layout_height="match_parent"
             app:tabGravity="fill"
             app:tabMode="fixed"
+            app:tabIndicatorColor="@color/colorGoogle"
+            app:tabSelectedTextColor="@color/colorFacebook"
             app:tabPadding="10dp"
+            app:tabBackground="@drawable/tablayout_color_selector"
+
             app:tabTextAppearance="@style/unCapCharacter" />
     </android.support.design.widget.AppBarLayout>
 

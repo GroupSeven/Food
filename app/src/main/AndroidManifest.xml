@@ -53,7 +53,9 @@
         <activity
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".activity.ProfileActivity"></activity>
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.PostActivity" />
+        <activity android:name=".activity.PostSnippetActivity"></activity>
     </application>
 
 </manifest>
