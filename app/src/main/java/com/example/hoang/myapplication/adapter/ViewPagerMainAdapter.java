@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.hoang.myapplication.fragment.FragmentFood;
 import com.example.hoang.myapplication.fragment.FragmentMapNearly;
+import com.example.hoang.myapplication.fragment.FragmentStoreList;
 import com.example.hoang.myapplication.fragment.FragmentTimeline;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ViewPagerMainAdapter extends FragmentPagerAdapter {
         fragmentList = new ArrayList<>();
         fragmentList.add(new FragmentTimeline());
         fragmentList.add(new FragmentFood());
-//        fragmentList.add(new FragmentStoreList());
+        fragmentList.add(new FragmentStoreList());
         fragmentList.add(new FragmentMapNearly());
 //        fragmentList.add(new FragmentProfile());
 
@@ -32,7 +33,7 @@ public class ViewPagerMainAdapter extends FragmentPagerAdapter {
         fragmentTitleList.add("What's News");
         fragmentTitleList.add("Food");
 
-//        fragmentTitleList.add("Store");
+        fragmentTitleList.add("Store");
         fragmentTitleList.add("Near me");
 //        fragmentTitleList.add("Profile");
     }

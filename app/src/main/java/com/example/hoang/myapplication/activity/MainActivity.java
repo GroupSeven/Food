@@ -1,7 +1,6 @@
 package com.example.hoang.myapplication.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -59,15 +58,16 @@ public class MainActivity extends AppCompatActivity {
         mViewPagerAdapter = new ViewPagerMainAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+//        setIconTab(); //// unComment to add Icon
+
+
+    }
+
+    private void setIconTab() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
         tabLayout.getTabAt(1).setIcon(R.drawable.quantum_ic_closed_caption_white_36);
-//        tabLayout.setVisibility(2);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_palette_white_24px);
-        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
-//        tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
-//        tabLayout.getTabAt(4).setIcon(R.drawable.ic_explore_white_24px);
-
-
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_explore_white_24px);
     }
 
     private void setUpDrawer() {
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (item.getItemId()) {
             case R.id.itCart:
-                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+//                startActivity(new Intent(MainActivity.this, MapsActivity.class));
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, "Welcome to AndroidHive", Snackbar.LENGTH_LONG);
                 snackbar.show();

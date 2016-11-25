@@ -73,10 +73,10 @@ public class FragmentMapNearly extends Fragment {
             @Override
             public void onMapReady(GoogleMap mMap) {
                 googleMap = mMap;
-//                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                setMylocationButton();
                 setupCameraMap();
                 setupMarker();
-                setMylocationButton();
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
             }
 
@@ -116,12 +116,11 @@ public class FragmentMapNearly extends Fragment {
 
 
             private void setMylocationButton() {
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
-                {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                     System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW");
-                    if(!checkPermission()) {
+                    if (!checkPermission()) {
                         requestPermission();
-                    }else {
+                    } else {
                         System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW++");
                     }
                 }
@@ -140,9 +139,9 @@ public class FragmentMapNearly extends Fragment {
 
             }
 
-            private boolean checkPermission(){
+            private boolean checkPermission() {
                 int result = ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_FINE_LOCATION);
-                if (result == PackageManager.PERMISSION_GRANTED){
+                if (result == PackageManager.PERMISSION_GRANTED) {
 
                     return true;
 
@@ -151,15 +150,16 @@ public class FragmentMapNearly extends Fragment {
                     return false;
                 }
             }
-            private void requestPermission(){
 
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION)){
+            private void requestPermission() {
 
-                    Toast.makeText(getContext(),"GPS permission allows us to access location data. Please allow in App Settings for additional functionality.",Toast.LENGTH_LONG).show();
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                    Toast.makeText(getContext(), "GPS permission allows us to access location data. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
 
                 } else {
-                    ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},PERMISSION_REQUEST_CODE);
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
                 }
             }
 
@@ -247,22 +247,12 @@ public class FragmentMapNearly extends Fragment {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getContext(),"Permission Granted, Now you can access location data.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Permission Granted, Now you can access location data.", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getContext(),"Permission Denied, You cannot access location data.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Permission Denied, You cannot access location data.", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
     }
 
-//    @Override
-//    public void onDestroyView() {
-//        if (googleMap != null) {
-//            getFragmentManager()
-//                    .beginTransaction()
-//                    .remove(getFragmentManager().findFragmentById(R.id.map))
-//                    .commit();
-//        }
-//        super.onDestroyView();
-//    }
 }
