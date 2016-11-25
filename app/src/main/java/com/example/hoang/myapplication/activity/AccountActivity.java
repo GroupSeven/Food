@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerAccountAdapter;
+import com.example.hoang.myapplication.helper.Helper;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.ButterKnife;
 
@@ -24,11 +27,22 @@ public class AccountActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     View view;
 
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
         ButterKnife.bind(this);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Helper.showMsg(getApplicationContext(), "NUll");
+        } else {
+            Helper.showMsg(getApplicationContext(),user.getDisplayName()
+            );
+        }
 
         findView();
         setUpTablayout();
@@ -56,6 +70,8 @@ public class AccountActivity extends AppCompatActivity {
         mViewPagerAdapter = new ViewPagerAccountAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
 //        tabLayout.getTabAt(0).setIcon(R.drawable.ic_restaurant_menu_white_24px);
 //        tabLayout.getTabAt(1).setIcon(R.drawable.ic_more_vert_white_24dp);
 
@@ -68,7 +84,7 @@ public class AccountActivity extends AppCompatActivity {
 //            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             onBackPressed();
         }
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
 }

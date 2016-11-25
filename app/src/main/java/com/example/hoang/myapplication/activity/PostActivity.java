@@ -3,12 +3,10 @@ package com.example.hoang.myapplication.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 
 import com.example.hoang.myapplication.R;
@@ -32,7 +30,6 @@ Toolbar toolbar;
         setContentView(R.layout.activity_post);
         ButterKnife.bind(this);
         ivProduct.setImageResource(R.drawable.user);
-
         setupToolBar();
 
     }
@@ -79,10 +76,7 @@ Toolbar toolbar;
     }
 
 
-    public void ivProductClick(View view) {
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(i, REQUES_CODE_IVPRODUCT);
-    }
+
 
 }
 

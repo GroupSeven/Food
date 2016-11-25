@@ -1,6 +1,5 @@
 package com.example.hoang.myapplication.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,19 +12,23 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Helper;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "cheese_name";
     private static final String PROFILE_URL = "http://img.f26.kinhdoanh.vnecdn.net/2016/11/24/diengiaVEPR201635201479952510-3401-2605-1479966259_490x294.jpg";
-
+    FirebaseUser user;
+    FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent = getIntent();
-        final String cheeseName = intent.getStringExtra(EXTRA_NAME);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(cheeseName);
+        collapsingToolbar.setTitle(user.getEmail());
 
         loadBackdrop();
     }

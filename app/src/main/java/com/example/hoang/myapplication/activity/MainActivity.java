@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.adapter.ViewPagerMainAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.ButterKnife;
 
@@ -30,12 +32,22 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
     CoordinatorLayout coordinatorLayout;
+    FirebaseUser user;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
+
+        } else {
+            Toast.makeText(getApplicationContext(), "chuwa dang nhap", Toast.LENGTH_SHORT).show();
+        }
 
         findView();
         setupToolbar();
@@ -84,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu_main, menu);
+        if (user != null) {
+            menu.findItem(R.id.itAccount).setVisible(false);
+            menu.findItem(R.id.itLogout).setVisible(true);
+            menu.findItem(R.id.itPost).setVisible(true);
+        }
+        if (user == null) {
+            menu.findItem(R.id.itProfile).setVisible(false);
+            menu.findItem(R.id.itLogout).setVisible(false);
+        }
         return true;
     }
 
@@ -100,17 +121,18 @@ public class MainActivity extends AppCompatActivity {
                 snackbar.show();
                 myToast("itCart");
                 break;
-            case R.id.itnotice:
-
+            case R.id.itPost:
+                startActivity(new Intent(getApplicationContext(), PostActivity.class));
+                break;
             case R.id.itProfile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
             case R.id.itAccount:
                 startActivity(new Intent(getApplicationContext(), AccountActivity.class));
-                myToast("login");
                 break;
-            case  R.id.itPost:
-                startActivity(new Intent(getApplicationContext(), PostActivity.class));
+            case R.id.itLogout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -124,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
         myToast("touched");
         return super.onTouchEvent(event);
     }
-
 
 
 }

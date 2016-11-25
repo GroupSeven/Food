@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "882205404273",
-    "firebase_url": "https://finalfoodcoderschool.firebaseio.com",
-    "project_id": "finalfoodcoderschool",
-    "storage_bucket": "finalfoodcoderschool.appspot.com"
+    "project_number": "585727185889",
+    "firebase_url": "https://app001coderschool.firebaseio.com",
+    "project_id": "app001coderschool",
+    "storage_bucket": "app001coderschool.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:882205404273:android:e2b37930c67b42da",
+        "mobilesdk_app_id": "1:585727185889:android:e2b37930c67b42da",
         "android_client_info": {
           "package_name": "com.example.hoang.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "882205404273-qttbc4usfbqrdb6dkugfpae6eiqresbh.apps.googleusercontent.com",
+          "client_id": "585727185889-ao9lqa3np7s8nrvh0gcrgu1llu7ihutu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.hoang.myapplication",
-            "certificate_hash": "ACA63F3F1A16AECCC4A7DA0BD6866B49F090DACA"
+            "certificate_hash": "A52034757605779D75A883890C72139ABD4452BA"
           }
         },
         {
-          "client_id": "882205404273-kejkgsle3rjvg9jbqk2tj588ag9pv7tp.apps.googleusercontent.com",
+          "client_id": "585727185889-4makc1ico0rube50if0dhi4ptmjil9jf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa9T8fB6y_B8JY2RMcftKR4FtdrpMnjJs"
+          "current_key": "AIzaSyAjbDb-HIaf03oe4KZ1O8pu4WuanLkmN28"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "882205404273-kejkgsle3rjvg9jbqk2tj588ag9pv7tp.apps.googleusercontent.com",
+              "client_id": "585727185889-4makc1ico0rube50if0dhi4ptmjil9jf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
