@@ -1,5 +1,6 @@
 package com.example.hoang.myapplication.maps;
 
+
 import android.os.AsyncTask;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -27,9 +28,7 @@ public class DirectionFinder {
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
     private static final String GOOGLE_API_KEY = "AIzaSyDnwLF2-WfK8cVZt9OoDYJ9Y8kspXhEHfI";
     private DirectionFinderListener listener;
-    private String origin;import android.os.AsyncTask;
-
-
+    private String origin;
     private String destination;
 
     public DirectionFinder(DirectionFinderListener listener, String origin, String destination) {
@@ -105,7 +104,6 @@ public class DirectionFinder {
             JSONObject jsonEndLocation = jsonLeg.getJSONObject("end_location");
             JSONObject jsonStartLocation = jsonLeg.getJSONObject("start_location");
 
-//            route.distance = new Distance(jsonDistance.getString("text"), jsonDistance.getInt("value"));
             route.distance = new Distance(jsonDistance.getString("text"), jsonDistance.getInt("value"));
             route.duration = new Duration(jsonDuration.getString("text"), jsonDuration.getInt("value"));
             route.endAddress = jsonLeg.getString("end_address");

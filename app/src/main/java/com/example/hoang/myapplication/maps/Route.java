@@ -1,7 +1,6 @@
 package com.example.hoang.myapplication.maps;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.nearby.messages.Distance;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  */
 
 public class Route {
-    public Distance distance;
+    public com.example.hoang.myapplication.maps.Distance distance;
     public Duration duration;
     public String endAddress;
     public LatLng endLocation;

@@ -103,8 +103,12 @@ public class Data {
     }
 
     public  static LatLng latLngHCM(){
-        return new LatLng(10.821982, 106.687136);
+        return new LatLng(10.829457, 106.682206);
 
     }
 
+    public static LatLng latLngHCM2() {
+        return new LatLng(10.822012, 106.687146);
+
+    }
 }
