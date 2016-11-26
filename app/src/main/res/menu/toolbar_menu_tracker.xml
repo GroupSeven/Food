@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/itRemovePoline"
+        android:title="Ngưng"
+        app:showAsAction="always" />
+
+    <item
+        android:checkable="true"
+        android:id="@+id/itShowStore"
+        android:icon="@drawable/ic_restaurant_menu_white_24px"
+        android:title="@string/text_cart"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itChuabiet"
+        android:icon="@drawable/ic_view_module_white_24px"
+        android:title="@string/text_cart"
+        app:showAsAction="always" />
+
+
+</menu>

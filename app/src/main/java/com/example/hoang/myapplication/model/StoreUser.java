@@ -25,6 +25,14 @@ public class StoreUser {
         this.lng = lng;
     }
 
+    public StoreUser(String name, String phone, double lat, double lng, String locate) {
+        this.name = name;
+        this.phone = phone;
+        this.lat = lat;
+        this.lng = lng;
+        this.locate = locate;
+    }
+
     public double getLat() {
         return lat;
     }

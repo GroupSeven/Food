@@ -41,7 +41,7 @@ public class SplashActivity extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            Intent i = new Intent(SplashActivity.this, MainActivity.class);
+            Intent i = new Intent(SplashActivity.this, TrackerActivity.class);
             startActivity(i); finish();
         }
 

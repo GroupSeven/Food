@@ -81,6 +81,27 @@ public class Data {
 
         return mList;
     }
+
+
+
+
+    public static List<StoreUser> UserFulldetail() {
+
+        List<StoreUser> mList = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                String lat, lng;
+                lat = "10." + i + j + "84792";
+                lng = "106." + j + i + "0996";
+                mList.add(new StoreUser("Cua hang  " + i + j, "098765432" , Float.parseFloat(lat), Float.parseFloat (lng), " Quan " + j));
+            }
+
+        }
+
+        return mList;
+    }
+
     public  static LatLng latLngHCM(){
         return new LatLng(10.821982, 106.687136);
 

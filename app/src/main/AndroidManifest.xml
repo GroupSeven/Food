@@ -56,6 +56,8 @@
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.PostActivity" />
         <activity android:name=".activity.PostSnippetActivity"></activity>
+        <activity android:name=".activity.TrackerActivity"></activity>
+
     </application>
 
 </manifest>
