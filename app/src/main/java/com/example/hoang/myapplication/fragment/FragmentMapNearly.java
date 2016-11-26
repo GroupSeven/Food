@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
+import com.example.hoang.myapplication.maps.DirectionFinderListener;
+import com.example.hoang.myapplication.maps.Route;
 import com.example.hoang.myapplication.model.StoreUser;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,12 +32,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by hoang o 21/11/2016.
  */
 
-public class FragmentMapNearly extends Fragment {
+public class FragmentMapNearly extends Fragment implements DirectionFinderListener{
     private static final int PERMISSION_REQUEST_CODE = 11;
     private MapView mMapView;
     private GoogleMap googleMap;
@@ -46,12 +49,12 @@ public class FragmentMapNearly extends Fragment {
     private RelativeLayout mrootLayout;
     private Snackbar snackbar;
     private PolylineOptions polylineOptions;
-
+    View rootView;
     Location mLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_map_nearly_layout, container, false);
+          rootView = inflater.inflate(R.layout.fragment_map_nearly_layout, container, false);
 
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
@@ -80,135 +83,7 @@ public class FragmentMapNearly extends Fragment {
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
             }
 
-            private void setupPoliline(LatLng currentLatLng, LatLng storeLatLng) {
-                polylineOptions = new PolylineOptions();
-                polylineOptions.add(currentLatLng);
-                polylineOptions.add(storeLatLng);
-                polylineOptions.color(R.color.colorRed);
-                googleMap.addPolyline(polylineOptions);
 
-            }
-
-            private LatLng myLocation() {
-                mLocation = googleMap.getMyLocation();
-                if (mLocation == null) {
-                    return new LatLng(10, 123);
-                } else {
-                    return new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
-                }
-            }
-
-            private void setupCameraMap() {
-                final LatLng sydney = new LatLng(10.821833, 106.887178);
-                CameraUpdate mCameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 9);
-
-                /*
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(8).tilt(30).bearing(90).build();
-                CameraUpdate mCameraUpdate2  = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                */
-                googleMap.animateCamera(mCameraUpdate, 1000, null);
-
-
-                googleMap.getUiSettings().setCompassEnabled(true);
-
-
-            }
-
-
-            private void setMylocationButton() {
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW");
-                    if (!checkPermission()) {
-                        requestPermission();
-                    } else {
-                        System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW++");
-                    }
-                }
-
-                /// old
-                if (ActivityCompat.checkSelfPermission(rootView.getContext()
-                        , Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && ActivityCompat.checkSelfPermission(rootView.getContext(),
-                        Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-
-                {
-                    return;
-                }
-                googleMap.setMyLocationEnabled(true);
-
-
-            }
-
-            private boolean checkPermission() {
-                int result = ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_FINE_LOCATION);
-                if (result == PackageManager.PERMISSION_GRANTED) {
-
-                    return true;
-
-                } else {
-
-                    return false;
-                }
-            }
-
-            private void requestPermission() {
-
-                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                    Toast.makeText(getContext(), "GPS permission allows us to access location data. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
-
-                } else {
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
-                }
-            }
-
-
-            private void setupMarker() {
-                mStoreUsers = new ArrayList<StoreUser>();
-                mStoreUsers.addAll(Data.postLatLngStoreUser());
-                for (int i = 0; i < mStoreUsers.size(); i++) {
-                    LatLng mLatLng = new LatLng(mStoreUsers.get(i).getLat(), mStoreUsers.get(i).getLng());
-                    markerOptions = new MarkerOptions();
-                    markerOptions.position(mLatLng).title("Store").snippet("Name :D");
-                    markerOptions.draggable(true);
-                    googleMap.addMarker(markerOptions);
-                    marker = googleMap.addMarker(markerOptions);
-                    marker.showInfoWindow();
-
-
-                }
-                markerClickEvent();
-            }
-
-            private void markerClickEvent() {
-                googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                    @Override
-                    public void onInfoWindowClick(final Marker marker) {
-                        LatLng storeLatLng = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
-                        setupPoliline(storeLatLng, myLocation());
-                        snackbar = Snackbar
-                                .make(mrootLayout, " this is : " + marker.getTitle(), Snackbar.LENGTH_LONG);
-                        snackbar.setAction("ef", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Toast.makeText(getContext(), "--+Start your activity, push sthing", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        snackbar.show();
-                    }
-
-                });
-
-
-                googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker marker) {
-                        Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
-                        return false;
-                    }
-                });
-            }
 
 
         });
@@ -217,6 +92,138 @@ public class FragmentMapNearly extends Fragment {
     }
 
 
+    //////////////////////////////////
+
+    private void setupPoliline(LatLng currentLatLng, LatLng storeLatLng) {
+        polylineOptions = new PolylineOptions();
+        polylineOptions.add(currentLatLng);
+        polylineOptions.add(storeLatLng);
+        polylineOptions.color(R.color.colorRed);
+        googleMap.addPolyline(polylineOptions);
+
+    }
+
+    private LatLng myLocation() {
+        mLocation = googleMap.getMyLocation();
+        if (mLocation == null) {
+            return new LatLng(10, 123);
+        } else {
+            return new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
+        }
+    }
+
+
+
+    private void setMylocationButton() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW");
+            if (!checkPermission()) {
+                requestPermission();
+            } else {
+                System.out.println("CHECK_RUN_TIME_PERMISSION_IF_MARSHMELLOW++");
+            }
+        }
+
+        /// old
+        if (ActivityCompat.checkSelfPermission(rootView.getContext()
+                , Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(rootView.getContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+
+        {
+            return;
+        }
+        googleMap.setMyLocationEnabled(true);
+
+
+    }
+
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.ACCESS_FINE_LOCATION);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+    }
+
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+            Toast.makeText(getContext(), "GPS permission allows us to access location data. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
+
+        } else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
+        }
+    }
+
+
+    private void setupMarker() {
+        mStoreUsers = new ArrayList<StoreUser>();
+        mStoreUsers.addAll(Data.postLatLngStoreUser());
+        for (int i = 0; i < mStoreUsers.size(); i++) {
+            LatLng mLatLng = new LatLng(mStoreUsers.get(i).getLat(), mStoreUsers.get(i).getLng());
+            markerOptions = new MarkerOptions();
+            markerOptions.position(mLatLng).title("Store").snippet("Name :D");
+            markerOptions.draggable(true);
+            googleMap.addMarker(markerOptions);
+            marker = googleMap.addMarker(markerOptions);
+            marker.showInfoWindow();
+
+
+        }
+        markerClickEvent();
+    }
+
+    private void markerClickEvent() {
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(final Marker marker) {
+                LatLng storeLatLng = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+                setupPoliline(storeLatLng, myLocation());
+                snackbar = Snackbar
+                        .make(mrootLayout, " this is : " + marker.getTitle(), Snackbar.LENGTH_LONG);
+                snackbar.setAction("ef", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(), "--+Start your activity, push sthing", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                snackbar.show();
+            }
+
+        });
+
+
+        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+    }
+
+    private void setupCameraMap() {
+        final LatLng sydney = new LatLng(10.821833, 106.887178);
+        CameraUpdate mCameraUpdate = CameraUpdateFactory.newLatLngZoom(sydney, 9);
+
+                /*
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(8).tilt(30).bearing(90).build();
+                CameraUpdate mCameraUpdate2  = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                */
+        googleMap.animateCamera(mCameraUpdate, 1000, null);
+
+
+        googleMap.getUiSettings().setCompassEnabled(true);
+
+
+    }
     @Override
     public void onResume() {
         super.onResume();
@@ -255,4 +262,13 @@ public class FragmentMapNearly extends Fragment {
         }
     }
 
+    @Override
+    public void onDirectionFinderStart() {
+
+    }
+
+    @Override
+    public void onDirectionFinderSuccess(List<Route> route) {
+
+    }
 }
