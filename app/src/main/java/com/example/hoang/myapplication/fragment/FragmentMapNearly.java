@@ -3,6 +3,7 @@ package com.example.hoang.myapplication.fragment;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -51,16 +52,19 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
     private PolylineOptions polylineOptions;
     View rootView;
     Location mLocation;
+    LocationManager locationManager;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
           rootView = inflater.inflate(R.layout.fragment_map_nearly_layout, container, false);
 
-
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
         coordinatorLayout = (CoordinatorLayout) rootView.findViewById(R.id.coordinatorLayout);
         mrootLayout = (RelativeLayout) rootView.findViewById(R.id.relativelayout);
+
+
 
         mMapView.onResume();
 
@@ -271,4 +275,6 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
     public void onDirectionFinderSuccess(List<Route> route) {
 
     }
+
+
 }
