@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.model.Direction;
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
 import com.example.hoang.myapplication.model.StoreUser;
@@ -36,6 +39,7 @@ import butterknife.ButterKnife;
 
 public class TrackerActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final int PERMISSION_REQUEST_CODE = 123;
+    private static final String serverk = "AIzaSyBIdAAndTRHHYwG99_xQ1I0BeMNMlXbz28";
     FirebaseUser user;
     FirebaseAuth mAuth;
     private ArrayList<StoreUser> mStoreUsers;
@@ -171,7 +175,34 @@ public class TrackerActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public boolean onMyLocationButtonClick() {
 
+
                 setCurrentMarker();
+
+                Location lct = mMap.getMyLocation();
+
+                GoogleDirection.withServerKey(serverk)
+                        .from(Data.latLngHCM())
+                        .to(new LatLng(lct.getLatitude() , lct.getLongitude()))
+                        .execute(new DirectionCallback() {
+                            @Override
+                            public void onDirectionSuccess(Direction direction, String rawBody) {
+                                Toast.makeText(getApplicationContext(), "Action ok", Toast.LENGTH_SHORT).show();
+                                if (direction.isOK()){
+                                    Toast.makeText(getApplicationContext(), "direction.isOK ok", Toast.LENGTH_SHORT).show();
+
+                                }else{
+                                    Toast.makeText(getApplicationContext(), " không direction.isOK ok", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onDirectionFailure(Throwable t) {
+                                Toast.makeText(getApplicationContext(), "Action failed" + t.toString(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
                 Toast.makeText(getApplicationContext(), "Mylocation button", Toast.LENGTH_SHORT).show();
                 return false;
             }
