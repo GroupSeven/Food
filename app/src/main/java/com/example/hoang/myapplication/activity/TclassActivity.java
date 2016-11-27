@@ -52,7 +52,7 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
 //    private EditText etOrigin;
 //    private EditText etDestination;
 
-//    @BindView(R.id.btnFindPath)
+    //    @BindView(R.id.btnFindPath)
 //    Button btnFindPath;
     @BindView(R.id.etOrigin)
     EditText etOrigin;
@@ -63,12 +63,14 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
 
-        private ArrayList<StoreUser> mStoreUsers;
+    private ArrayList<StoreUser> mStoreUsers;
 
     private ProgressDialog progressDialog;
 
     Marker mMarker;
     MarkerOptions markerOptions;
+
+    Location l;
 
 
     @Override
@@ -112,7 +114,7 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
         mMap.setOnCameraChangeListener(new GoogleMap.OnCameraChangeListener() {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
-                Toast.makeText(getApplicationContext() , "" + String.valueOf(cameraPosition.bearing), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "" + String.valueOf(cameraPosition.bearing), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -123,7 +125,7 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Location l = mMap.getMyLocation();
+                l = mMap.getMyLocation();
                 String origin = String.valueOf(l.getLatitude() + "," + String.valueOf(l.getLongitude()));
                 String destination = String.valueOf(marker.getPosition().latitude) + "," + String.valueOf(marker.getPosition().longitude);
                 Log.d("O-D", origin + "----" + destination);
@@ -134,8 +136,6 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
         });
 
     }
-
-
 
 
     /// done
@@ -169,12 +169,14 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
         mMap.addMarker(markerOptions);
 
     }
+
     private void MyLocationButtonEven() {
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
 //                mMap.clear();
-                Location l = mMap.getMyLocation();
+
+                l = mMap.getMyLocation();
                 markerOptions = new MarkerOptions();
                 markerOptions.position(new LatLng(l.getLatitude(), l.getLongitude()))
                         .title("Đây là bạn")

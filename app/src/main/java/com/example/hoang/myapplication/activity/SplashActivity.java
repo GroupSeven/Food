@@ -42,7 +42,7 @@ public class SplashActivity extends Activity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
 //            Intent i = new Intent(SplashActivity.this, TclassActivity.class);
-            Intent i = new Intent(SplashActivity.this, TclassActivity.class);
+            Intent i = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(i); finish();
         }
 

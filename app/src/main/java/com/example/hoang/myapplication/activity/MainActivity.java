@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.itPost:
                 startActivity(new Intent(getApplicationContext(), PostActivity.class));
                 break;
+            case R.id.itLoli:
+                startActivity(new Intent(getApplicationContext(), TclassActivity.class));
+                break;
             case R.id.itProfile:
                 startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 break;
