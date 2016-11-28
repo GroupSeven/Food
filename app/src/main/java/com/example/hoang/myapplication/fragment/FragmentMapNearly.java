@@ -337,8 +337,11 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
         for (Route route : routes) {
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(route.endLocation));
             snackbar = Snackbar
-                    .make(mrootLayout, " this is : " + marker.getTitle() +" cách bạn " + route.distance.text , Snackbar.LENGTH_LONG);
-            snackbar.setAction("ef", new View.OnClickListener() {
+                    .make(mrootLayout, " Đây là cửa hàng : " + marker.getTitle()
+                            +" \ncách bạn " + route.distance.text
+                            + " , đi khoảng:  "
+                            + route.duration.text + " là tới" , Snackbar.LENGTH_LONG);
+            snackbar.setAction("ActionButton    ", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getContext(), "Acction here", Toast.LENGTH_SHORT).show();
