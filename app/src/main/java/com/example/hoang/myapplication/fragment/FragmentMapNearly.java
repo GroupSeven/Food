@@ -1,7 +1,9 @@
 package com.example.hoang.myapplication.fragment;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
+import com.example.hoang.myapplication.maps.DirectionFinder;
 import com.example.hoang.myapplication.maps.DirectionFinderListener;
 import com.example.hoang.myapplication.maps.Route;
 import com.example.hoang.myapplication.model.StoreUser;
@@ -27,11 +30,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +45,7 @@ import java.util.List;
  * Created by hoang o 21/11/2016.
  */
 
-public class FragmentMapNearly extends Fragment implements DirectionFinderListener{
+public class FragmentMapNearly extends Fragment implements DirectionFinderListener {
     private static final int PERMISSION_REQUEST_CODE = 11;
     private MapView mMapView;
     private GoogleMap googleMap;
@@ -50,6 +56,14 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
     private RelativeLayout mrootLayout;
     private Snackbar snackbar;
     private PolylineOptions polylineOptions;
+
+    Location l;
+    private List<Marker> originMarkers = new ArrayList<>();
+    private List<Marker> destinationMarkers = new ArrayList<>();
+    private List<Polyline> polylinePaths = new ArrayList<>();
+    private ProgressDialog progressDialog;
+
+
     View rootView;
     Location mLocation;
     LocationManager locationManager;
@@ -57,13 +71,12 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-          rootView = inflater.inflate(R.layout.fragment_map_nearly_layout, container, false);
+        rootView = inflater.inflate(R.layout.fragment_map_nearly_layout, container, false);
 
         mMapView = (MapView) rootView.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
         coordinatorLayout = (CoordinatorLayout) rootView.findViewById(R.id.coordinatorLayout);
         mrootLayout = (RelativeLayout) rootView.findViewById(R.id.relativelayout);
-
 
 
         mMapView.onResume();
@@ -84,10 +97,10 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
                 setMylocationButton();
                 setupCameraMap();
                 setupMarker();
+
+
                 googleMap.getUiSettings().setZoomControlsEnabled(true);
             }
-
-
 
 
         });
@@ -115,7 +128,6 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
             return new LatLng(mLocation.getLatitude(), mLocation.getLongitude());
         }
     }
-
 
 
     private void setMylocationButton() {
@@ -189,7 +201,7 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
             @Override
             public void onInfoWindowClick(final Marker marker) {
                 LatLng storeLatLng = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
-                setupPoliline(storeLatLng, myLocation());
+//                setupPoliline(storeLatLng, myLocation());
                 snackbar = Snackbar
                         .make(mrootLayout, " this is : " + marker.getTitle(), Snackbar.LENGTH_LONG);
                 snackbar.setAction("ef", new View.OnClickListener() {
@@ -208,6 +220,10 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                l = googleMap.getMyLocation();
+
+                drawPolyline(String.valueOf(l.getLatitude()) + "," + String.valueOf(l.getLongitude()), String.valueOf(marker.getPosition().latitude) + "," + String.valueOf(marker.getPosition().longitude));
+
                 return false;
             }
         });
@@ -228,6 +244,7 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
 
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -266,14 +283,91 @@ public class FragmentMapNearly extends Fragment implements DirectionFinderListen
         }
     }
 
+
+    private void drawPolyline(String origin, String destination) {
+
+        if (origin.isEmpty()) {
+            Toast.makeText(getContext(), "Please enter origin address!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (destination.isEmpty()) {
+            Toast.makeText(getContext(), "Please enter destination address!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        try {
+            new DirectionFinder(this, origin, destination).execute();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public void onDirectionFinderStart() {
+        progressDialog = ProgressDialog.show(getContext(), "Please wait.",
+                "Finding direction..!", true);
 
+        if (originMarkers != null) {
+            for (Marker marker : originMarkers) {
+                marker.remove();
+            }
+        }
+
+        if (destinationMarkers != null) {
+            for (Marker marker : destinationMarkers) {
+                marker.remove();
+            }
+        }
+
+        if (polylinePaths != null) {
+            for (Polyline polyline : polylinePaths) {
+                polyline.remove();
+            }
+        }
     }
 
     @Override
-    public void onDirectionFinderSuccess(List<Route> route) {
+    public void onDirectionFinderSuccess(List<Route> routes) {
+        progressDialog.dismiss();
+        polylinePaths = new ArrayList<>();
+        originMarkers = new ArrayList<>();
+        destinationMarkers = new ArrayList<>();
 
+        for (Route route : routes) {
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(route.endLocation));
+            snackbar = Snackbar
+                    .make(mrootLayout, " this is : " + marker.getTitle() +" cách bạn " + route.distance.text , Snackbar.LENGTH_LONG);
+            snackbar.setAction("ef", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getContext(), "Acction here", Toast.LENGTH_SHORT).show();
+                }
+            });
+            snackbar.show();
+
+
+
+            originMarkers.add(googleMap.addMarker(new MarkerOptions()
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_clear_black_24dp))
+                    .title(route.startAddress)
+                    .position(route.startLocation)));
+            destinationMarkers.add(googleMap.addMarker(new MarkerOptions()
+//                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+                    .title(route.endAddress)
+                    .position(route.endLocation)));
+
+            PolylineOptions polylineOptions = new PolylineOptions().
+                    geodesic(true).
+                    color(Color.BLUE).
+                    width(10);
+
+            for (int i = 0; i < route.points.size(); i++)
+                polylineOptions.add(route.points.get(i));
+
+            polylinePaths.add(googleMap.addPolyline(polylineOptions));
+        }
     }
 
 
