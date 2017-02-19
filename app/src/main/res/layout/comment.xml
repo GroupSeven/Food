@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button_seeall"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="0dp"
+            android:text="See all activity (7)"
+            android:textAllCaps="false"
+            android:textColor="#14ACE5"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#e2e2e2"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/button_addemotion"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/button_addfollow"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_item_icon_at_timeline"
+            android:gravity="center"
+            android:minWidth="90dp">
+
+            <ImageView
+                android:id="@+id/icon_addemotion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:maxHeight="20dp"
+                android:maxWidth="20dp" />
+
+            <TextView
+                android:id="@+id/text_addemotion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:text="@string/CamXuc"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_addcomment"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/button_addfollow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_item_icon_at_timeline"
+            android:gravity="center"
+            android:minWidth="90dp">
+
+            <TextView
+                android:id="@+id/text_addcomment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:text="@string/comment"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_addfollow"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_item_icon_at_timeline"
+            android:gravity="center"
+            android:minWidth="90dp">
+
+            <TextView
+                android:id="@+id/text_addfollow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+                android:text="@string/share"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

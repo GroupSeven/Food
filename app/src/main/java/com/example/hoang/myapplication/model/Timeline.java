@@ -9,12 +9,14 @@ public class Timeline {
     private String content;
     private String imgUrl;
     private String time;
+    private String avatar;
 
-    public Timeline(String name, String content, String imgUrl, String time) {
+    public Timeline(String name, String content, String imgUrl, String time, String avatar) {
         this.name = name;
         this.content = content;
         this.imgUrl = imgUrl;
         this.time = time;
+        this.avatar = avatar;
     }
 
     public Timeline() {
@@ -50,5 +52,13 @@ public class Timeline {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

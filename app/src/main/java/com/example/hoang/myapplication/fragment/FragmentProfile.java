@@ -44,7 +44,7 @@
 //        ivAvatar.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Helper.showMsg(getContext(),"Huu");
+//                Helper.showToast(getContext(),"Huu");
 //                ShowDialogAvatar();
 //            }
 //        });
@@ -62,7 +62,7 @@
 ////        tvChangeAvatar.setOnClickListener(new View.OnClickListener() {
 ////            @Override
 ////            public void onClick(View view) {
-////                Helper.showMsg(getContext(), "btn1");
+////                Helper.showToast(getContext(), "btn1");
 ////                getContext().startActivity(new Intent(MediaStore.ACTION_IMAGE_CAPTURE));
 ////            }
 ////        });
@@ -71,7 +71,7 @@
 ////        tvViewAvatar.setOnClickListener(new View.OnClickListener() {
 ////            @Override
 ////            public void onClick(View view) {
-////                Helper.showMsg(getContext(), "Show avatar Action");
+////                Helper.showToast(getContext(), "Show avatar Action");
 ////            }
 ////        });
 ////        dlAvatar.show();

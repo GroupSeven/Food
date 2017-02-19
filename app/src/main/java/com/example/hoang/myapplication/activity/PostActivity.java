@@ -61,7 +61,7 @@ public class PostActivity extends AppCompatActivity {
                 onBackPressed();
                 break;
             case R.id.itSavePost:
-                Helper.showMsg(getApplicationContext(), "do action post");
+                Helper.showToast(getApplicationContext(), "do action post");
             default:
                 break;
         }

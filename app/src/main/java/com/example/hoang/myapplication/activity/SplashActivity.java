@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import com.example.hoang.myapplication.R;
 
 public class SplashActivity extends Activity {
-    private static final int SPLASH_SHOW_TIME = 1000;
+    private static final int SPLASH_SHOW_TIME = 0;
     // don't forget chang SPLASH_SHOW_TIME to 1k
 
     @Override protected void onCreate(Bundle savedInstanceState) {

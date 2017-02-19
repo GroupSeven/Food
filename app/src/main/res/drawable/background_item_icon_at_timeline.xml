@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    />		<!-- Hiện màu đỏ khi ấn vào nút -->
+    <item android:state_pressed="false">
+        <shape >
+            <solid
+                android:color="@color/colorToolbarBellow" />
+            <stroke
+                android:width="0dp"
+                android:color="@color/colorWhite" />
+            <corners
+                android:radius="20dp" />
+            <padding
+                android:left="0dp"
+                android:right="0dp"
+                android:top="0dp"
+                android:bottom="0dp" />
+        </shape>
+    </item><!-- Hiện màu xanh da trời khi không nhấn nút -->
+</selector>

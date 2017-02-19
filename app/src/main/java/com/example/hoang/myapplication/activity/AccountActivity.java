@@ -38,9 +38,9 @@ public class AccountActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
-            Helper.showMsg(getApplicationContext(), "NUll");
+            Helper.showToast(getApplicationContext(), "NUll");
         } else {
-            Helper.showMsg(getApplicationContext(),user.getDisplayName()
+            Helper.showToast(getApplicationContext(),user.getDisplayName()
             );
         }
 

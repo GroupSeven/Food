@@ -107,7 +107,7 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
         mMap.setOnCameraMoveStartedListener(new GoogleMap.OnCameraMoveStartedListener() {
             @Override
             public void onCameraMoveStarted(int i) {
-                Helper.showMsg(getApplicationContext(), "strated");
+                Helper.showToast(getApplicationContext(), "strated");
             }
         });
 
@@ -187,7 +187,7 @@ public class TclassActivity extends FragmentActivity implements OnMapReadyCallba
                 // dong nay voi dong duoi giong nhau
                 mMap.addMarker(markerOptions);
                 mMarker = mMap.addMarker(markerOptions);
-                Helper.showMsg(getApplicationContext(), "click ok nha");
+                Helper.showToast(getApplicationContext(), "click ok nha");
                 return false;
             }
         });

@@ -8,61 +8,76 @@
     app:cardCornerRadius="6dp"
     app:contentPadding="10dp">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="3dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:textColor="@color/colorRed"
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quân Vũ"
-            android:textAlignment="inherit" />
-
-        <TextView
-            android:id="@+id/tvSnip"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:maxWidth="200sp"
-            android:text="Đêm qua tát nước đầu đình,
-            bỏ quên laptop trên cành hoa sen"
-            android:textAlignment="inherit"
-            android:textColor="#ccc" />
+            android:orientation="vertical"
+            android:padding="3dp"
+            android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/ivImgPostTiemline"
-            android:layout_width="200sp"
-            android:layout_height="200sp"
-            android:src="@drawable/facebookiconsmall" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:padding="6dp"
+                    android:id="@+id/ivUserAvatar"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
+                    android:src="@drawable/user" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Quân Vũ"
+                        android:textAlignment="inherit"
+                        android:textColor="@color/colorRed"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15m ago, \n HCMC, Viet Nam" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSnip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:maxWidth="200sp"
+                android:text="Đêm qua tát nước đầu đình,
+            bỏ quên laptop trên cành hoa sen"
+                android:textAlignment="inherit"
+                android:textColor="#30312e"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/ivImgPostTiemline"
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                android:layout_weight="0.87"
+                android:padding="10dp"
+                android:src="@drawable/like" />
+        </LinearLayout>
+
+        <include layout="@layout/comment" />
+
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-    <ImageButton
-        android:layout_marginRight="60dp"
-        android:src="@drawable/ic_apps_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageButton
-        android:layout_marginRight="60dp"
-        android:src="@drawable/ic_apps_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageButton
-        android:layout_marginRight="50dp"
-        android:src="@drawable/ic_delete_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
-</LinearLayout>
 
 </android.support.v7.widget.CardView>

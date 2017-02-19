@@ -66,7 +66,7 @@ public class Fragment_Account_Register extends Fragment {
                 if (isValid) {
                     sigUp(edtUser.getText().toString().trim(), edtPassword.getText().toString().trim());
                 } else {
-                    Helper.showMsg(getContext(), "You must put mail, pass corectly or not null");
+                    Helper.showToast(getContext(), "You must put mail, pass corectly or not null");
                 }
             }
 
@@ -86,7 +86,7 @@ public class Fragment_Account_Register extends Fragment {
 //                    tvOK.setVisibility(View.VISIBLE);
                 }
                 if (!task.isSuccessful()) {
-                    Helper.showMsg(getContext(), task.getException().getLocalizedMessage());
+                    Helper.showToast(getContext(), task.getException().getLocalizedMessage());
 
                 }
             }

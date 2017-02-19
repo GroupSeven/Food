@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     private void setUpTablayout() {
         mViewPagerAdapter = new ViewPagerMainAdapter(getSupportFragmentManager());
         viewPager.setAdapter(mViewPagerAdapter);
+        viewPager.setOffscreenPageLimit(4);
         tabLayout.setupWithViewPager(viewPager);
 //        setIconTab(); //// unComment to add Icon
 

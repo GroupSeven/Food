@@ -75,6 +75,6 @@ public class UserStoreActivity extends AppCompatActivity {
     }
 
     public void btnClick(View view) {
-        Helper.showMsg(getApplicationContext(),"btn");
+        Helper.showToast(getApplicationContext(),"btn");
     }
 }

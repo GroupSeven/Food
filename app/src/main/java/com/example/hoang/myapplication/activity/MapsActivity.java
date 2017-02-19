@@ -7,6 +7,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 
 import com.example.hoang.myapplication.R;
 import com.example.hoang.myapplication.helper.Data;
@@ -60,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Helper.showMsg(getApplicationContext(), "SHOW");
+                Helper.showToast(getApplicationContext(), "SHOW");
 
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, String.valueOf("abc"), Snackbar.LENGTH_LONG);
@@ -77,7 +78,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -89,4 +91,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         mMap.setMyLocationEnabled(true);
     }
+    protected void requestPermission(String permissionType, int requestCode) {
+        int permission = ContextCompat.checkSelfPermission(this,
+                permissionType);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{permissionType}, requestCode
+            );
+        }
+    }
+
+
 }

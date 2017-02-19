@@ -63,7 +63,7 @@ public class Fragment_Account_Login extends Fragment {
                 if (iValid) {
                     register(edtUser.getText().toString().trim(), edtPassword.getText().toString().trim());
                 } else {
-                    Helper.showMsg(getContext(), "check input");
+                    Helper.showToast(getContext(), "check input");
 
                 }
             }
@@ -75,10 +75,10 @@ public class Fragment_Account_Login extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Helper.showMsg(getContext(), "Loged");
+                    Helper.showToast(getContext(), "Loged");
                     startActivity(new Intent(getContext(), MainActivity.class));
                 } else {
-                    Helper.showMsg(getContext(), task.getException().getLocalizedMessage());
+                    Helper.showToast(getContext(), task.getException().getLocalizedMessage());
                 }
             }
         });
